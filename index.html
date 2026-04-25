@@ -1,1 +1,1541 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Freelance Web Bible — Complete Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#faf7f2;--bg2:#f3efe8;--bg3:#ede8df;--surface:#ffffff;
+--border:#ddd8ce;--border2:#c8c2b6;--text:#1a1612;--muted:#7a7268;
+--faint:#b8b2a8;--accent:#b85c2a;--accent2:#9a4a20;--accent-bg:#fdf0e8;
+--green:#2e7d52;--green-bg:#eaf4ee;--red:#b83232;--red-bg:#fdeaea;
+--amber:#a06010;--amber-bg:#fef6e4;--blue:#466b94;--blue-bg:#edf3fa;
+--serif:'EB Garamond',Georgia,serif;--mono:'IBM Plex Mono',monospace;
+--r:8px;--r2:12px;--shadow:0 1px 4px rgba(26,22,18,.07);--shadow2:0 2px 12px rgba(26,22,18,.1)
+}
+[data-theme="dark"]{
+--bg:#100e0b;--bg2:#181510;--bg3:#201d18;--surface:#241f19;
+--border:#332d25;--border2:#4a4238;--text:#ede6da;--muted:#8a8070;
+--faint:#4a4238;--accent:#d4784a;--accent2:#e8905c;--accent-bg:#2a1e14;
+--green:#3aaa6a;--green-bg:#0e2018;--red:#d45050;--red-bg:#220e0e;
+--amber:#c88030;--amber-bg:#201608;--blue:#6d96c7;--blue-bg:#12202f;
+--shadow:0 1px 4px rgba(0,0,0,.3);--shadow2:0 2px 12px rgba(0,0,0,.4)
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--serif);font-size:16px;line-height:1.7;min-height:100vh;transition:background .3s,color .3s}
+nav{position:relative;background:var(--bg);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;align-items:center;gap:12px;min-height:48px;flex-wrap:wrap}
+.nav-brand{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--muted);text-decoration:none;white-space:nowrap}
+.nav-brand span{color:var(--accent)}
+.nav-tabs{display:flex;gap:3px;flex-wrap:wrap;padding:6px 0;flex:1}
+.nav-tab{font-family:var(--mono);font-size:10px;letter-spacing:.05em;padding:5px 10px;border-radius:6px;border:1px solid transparent;background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;white-space:nowrap}
+.nav-tab:hover{color:var(--accent);background:var(--bg2)}
+.nav-tab.active{background:var(--accent-bg);color:var(--accent);border-color:var(--border)}
+.nav-tabs.floating{position:fixed;top:12px;left:50%;transform:translateX(-50%);padding:5px 8px;border-radius:999px;border:1px solid var(--border2);box-shadow:var(--shadow2);z-index:999;flex-wrap:nowrap;overflow-x:auto;max-width:96vw;gap:2px;scrollbar-width:none}
+.nav-tabs.floating::-webkit-scrollbar{display:none}
+[data-theme="light"] .nav-tabs.floating{background:rgba(255,255,255,.97)}
+[data-theme="dark"] .nav-tabs.floating{background:rgba(36,31,25,.97)}
+.nav-tabs.floating .nav-tab{padding:6px 12px;border-radius:999px;font-size:10px}
+.nav-tabs.floating .nav-tab.active{background:var(--accent);color:#fff;border-color:transparent;box-shadow:0 3px 10px rgba(184,92,42,.25)}
+.theme-btn{position:fixed;bottom:20px;right:20px;z-index:999;font-family:var(--mono);font-size:10px;padding:8px 14px;border-radius:999px;border:1px solid var(--border2);background:var(--surface);color:var(--muted);cursor:pointer;box-shadow:var(--shadow2);transition:all .2s}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent)}
+.page{display:none}.page.active{display:block}
+.wrap{max-width:1100px;margin:0 auto;padding:2.5rem 2rem 6rem}
+.hero{text-align:center;max-width:780px;margin:0 auto 3rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border)}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,52px);font-weight:400;line-height:1.1;letter-spacing:-.01em;margin-bottom:1rem}
+h1 em{font-style:italic;color:var(--accent)}
+.hero-sub{font-size:16px;color:var(--muted);max-width:560px;margin:0 auto}
+.page-hdr{margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.page-hdr h2{font-family:var(--serif);font-size:clamp(24px,4vw,38px);font-weight:400;line-height:1.1;margin-bottom:.4rem}
+.page-hdr h2 em{font-style:italic;color:var(--accent)}
+.page-hdr p{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sec-hdr{margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.sec-title{font-family:var(--serif);font-size:19px;font-weight:400}
+.sec-sub{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:18px 20px;box-shadow:var(--shadow);margin-bottom:14px}
+.panel-hdr{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.panel-label{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:700px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;box-shadow:var(--shadow)}
+.stat-k{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.stat-v{font-family:var(--mono);font-size:20px;font-weight:500;color:var(--accent)}
+.stat-s{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px}
+.big-price{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden;margin-bottom:14px}
+.big-price::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.bp-label{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.bp-val{font-family:var(--serif);font-size:48px;line-height:1;letter-spacing:-.02em;font-weight:400;color:var(--accent)}
+.bp-sub{font-family:var(--mono);font-size:11px;margin-top:8px;color:var(--muted);line-height:1.8}
+.tbl{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12px}
+.tbl th{text-align:left;padding:7px 10px;border-bottom:2px solid var(--border);color:var(--muted);font-weight:500;letter-spacing:.06em;font-size:10px;text-transform:uppercase}
+.tbl td{padding:7px 10px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:var(--bg2)}
+.tbl-accent{color:var(--accent)!important;font-weight:500}
+.tbl-green{color:var(--green)!important}
+.tbl-muted{color:var(--muted)!important}
+.tbl-amber{color:var(--amber)!important}
+.badge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:4px}
+.badge-green{background:var(--green-bg);color:var(--green)}
+.badge-amber{background:var(--amber-bg);color:var(--amber)}
+.badge-red{background:var(--red-bg);color:var(--red)}
+.badge-blue{background:var(--blue-bg);color:var(--blue)}
+.badge-accent{background:var(--accent-bg);color:var(--accent)}
+.info-bar{padding:11px 15px;border-radius:var(--r);font-family:var(--mono);font-size:12px;line-height:1.7;margin-bottom:14px}
+.info-bar.green{background:var(--green-bg);color:var(--green);border:1px solid rgba(46,125,82,.2)}
+.info-bar.red{background:var(--red-bg);color:var(--red);border:1px solid rgba(184,50,50,.2)}
+.info-bar.amber{background:var(--amber-bg);color:var(--amber);border:1px solid rgba(160,96,16,.2)}
+.info-bar.blue{background:var(--blue-bg);color:var(--blue);border:1px solid rgba(70,107,148,.2)}
+.info-bar.accent{background:var(--accent-bg);color:var(--accent);border:1px solid rgba(184,92,42,.2)}
+.inner-tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:18px}
+.inner-tab{font-family:var(--mono);font-size:11px;padding:6px 14px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .15s}
+.inner-tab:hover{border-color:var(--accent);color:var(--accent)}
+.inner-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.script-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px;font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--text);white-space:pre-wrap;max-height:360px;overflow-y:auto}
+.cbtn{font-family:var(--mono);font-size:10px;padding:3px 9px;border:1px solid var(--border2);border-radius:5px;background:transparent;color:var(--muted);cursor:pointer;transition:all .15s}
+.cbtn:hover{border-color:var(--accent);color:var(--accent)}
+.cbtn.ok{color:var(--green);border-color:var(--green)}
+.nav-btn{font-family:var(--mono);font-size:11px;padding:7px 14px;border-radius:7px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;transition:all .15s}
+.nav-btn:hover{border-color:var(--accent);color:var(--accent)}
+.nav-btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.result-row{display:flex;justify-content:space-between;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:12px;gap:10px}
+.result-row:last-child{border-bottom:none}
+.result-label{color:var(--muted);flex-shrink:0}
+.step-list{list-style:none;padding:0}
+.step-list li{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.step-list li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.step-num{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--accent-bg);color:var(--accent);font-family:var(--mono);font-size:10px;font-weight:500;display:flex;align-items:center;justify-content:center}
+.step-body{font-size:14px;padding-top:2px}
+.tool-tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 7px;border-radius:4px;background:var(--bg3);color:var(--muted);margin:2px 3px 2px 0;border:1px solid var(--border)}
+.tool-tag.free{background:var(--green-bg);color:var(--green);border-color:rgba(46,125,82,.2)}
+.tool-tag.paid{background:var(--amber-bg);color:var(--amber);border-color:rgba(160,96,16,.2)}
+.tool-tag.ai{background:var(--blue-bg);color:var(--blue);border-color:rgba(70,107,148,.2)}
+.accordion{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
+.accordion-hdr{padding:13px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .15s}
+.accordion-hdr:hover{background:var(--bg2)}
+.accordion-title{font-family:var(--serif);font-size:16px}
+.accordion-arrow{font-family:var(--mono);font-size:11px;color:var(--muted);transition:transform .2s;flex-shrink:0}
+.accordion-body{display:none;padding:0 16px 16px;border-top:1px solid var(--border)}
+.accordion-body.open{display:block}
+.niche-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-bottom:24px}
+.niche-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:15px;cursor:pointer;transition:all .2s;box-shadow:var(--shadow)}
+.niche-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow2)}
+.niche-icon{font-size:22px;margin-bottom:7px}
+.niche-name{font-family:var(--serif);font-size:15px;margin-bottom:3px}
+.niche-range{font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:7px}
+.detail-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center;padding:1rem}
+.detail-overlay.open{display:flex}
+.detail-modal{background:var(--surface);border-radius:var(--r2);padding:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,.3);border:1px solid var(--border2)}
+.modal-close{float:right;font-family:var(--mono);font-size:10px;padding:4px 10px;border:1px solid var(--border);border-radius:5px;background:transparent;color:var(--muted);cursor:pointer;margin-bottom:8px}
+.inline-money{display:flex;align-items:center;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.inline-money span{font-family:var(--mono);font-size:13px;padding:8px 10px;color:var(--muted);border-right:1px solid var(--border);background:var(--bg3);flex-shrink:0}
+.inline-money input{background:transparent;border:none;outline:none;font-family:var(--mono);font-size:13px;color:var(--text);padding:8px 10px;width:100%}
+.field{margin-bottom:12px}
+.field label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.fi{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:8px 11px;font-family:var(--mono);font-size:12px;color:var(--text);outline:none;transition:border-color .15s}
+.fi:focus{border-color:var(--accent)}
+select.fi{cursor:pointer}
+.check-list{list-style:none;padding:0}
+.check-item{display:flex;align-items:center;gap:9px;padding:6px 0;border-bottom:1px solid var(--border)}
+.check-item:last-child{border-bottom:none}
+.check-item input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:pointer;flex-shrink:0}
+.check-item label{font-family:var(--mono);font-size:11px;cursor:pointer;color:var(--text)}
+.ac-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:18px 20px;box-shadow:var(--shadow);position:relative;overflow:hidden;margin-bottom:12px}
+.ac-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.ac-label{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.ac-val{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--accent);margin-bottom:4px}
+.ac-sub{font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.7}
+footer{text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--faint);padding:2rem;border-top:1px solid var(--border)}
+.mb8{margin-bottom:8px}.mb16{margin-bottom:16px}.mb24{margin-bottom:24px}
+</style>
+</head>
+<body>
 
+<nav>
+  <a class="nav-brand" href="#" onclick="showPage('home');return false"><span>WEB</span> Bible</a>
+  <div id="navTabs" class="nav-tabs">
+    <button class="nav-tab active" onclick="showPage('home')">Home</button>
+    <button class="nav-tab" onclick="showPage('toolkit')">Toolkit</button>
+    <button class="nav-tab" onclick="showPage('aistack')">AI Stack</button>
+    <button class="nav-tab" onclick="showPage('freetools')">Free Tools</button>
+    <button class="nav-tab" onclick="showPage('pricing')">Pricing</button>
+    <button class="nav-tab" onclick="showPage('niches')">Niches</button>
+    <button class="nav-tab" onclick="showPage('clients')">Get Clients</button>
+    <button class="nav-tab" onclick="showPage('scripts')">Scripts</button>
+    <button class="nav-tab" onclick="showPage('anatomy')">Site Anatomy</button>
+    <button class="nav-tab" onclick="showPage('platforms')">Platforms</button>
+    <button class="nav-tab" onclick="showPage('process')">Build Process</button>
+    <button class="nav-tab" onclick="showPage('seo')">SEO</button>
+    <button class="nav-tab" onclick="showPage('legal')">Legal</button>
+    <button class="nav-tab" onclick="showPage('secrets')">Secrets</button>
+    <button class="nav-tab" onclick="showPage('checklist')">Checklist</button>
+    <button class="nav-tab" onclick="showPage('calc')">Calculator</button>
+  </div>
+</nav>
+<button class="theme-btn" onclick="toggleTheme()">☀ / ☾</button>
+<!-- PAGES START -->
+<!-- HOME -->
+<div class="page active" id="page-home"><div class="wrap">
+  <div class="hero">
+    <div class="hero-eyebrow">Freelance Web Business — Complete Reference Guide</div>
+    <h1>Your freelance web business <em>bible</em></h1>
+    <p class="hero-sub">Every tool, script, trick, platform, pricing strategy, client type, and pro secret — all in one place.</p>
+  </div>
+  <div class="g4 mb24">
+    <div class="stat-card"><div class="stat-k">Sections</div><div class="stat-v">16</div><div class="stat-s">Complete reference</div></div>
+    <div class="stat-card"><div class="stat-k">Free tools</div><div class="stat-v">40+</div><div class="stat-s">Verified free tiers</div></div>
+    <div class="stat-card"><div class="stat-k">Copy scripts</div><div class="stat-v">12+</div><div class="stat-s">Ready to send</div></div>
+    <div class="stat-card"><div class="stat-k">Niche profiles</div><div class="stat-v">20+</div><div class="stat-s">With pitch guides</div></div>
+  </div>
+  <div class="g3 mb24">
+    <div class="panel" style="cursor:pointer;border-top:3px solid var(--accent)" onclick="showPage('aistack')"><div class="ac-label">AI Stack</div><div style="font-family:var(--serif);font-size:17px;margin-bottom:5px">Your unfair advantage</div><div style="font-family:var(--mono);font-size:11px;color:var(--muted)">Claude + Cursor + v0 + Bolt. Build sites 10× faster. Pocket the extra margin.</div></div>
+    <div class="panel" style="cursor:pointer;border-top:3px solid var(--green)" onclick="showPage('freetools')"><div class="ac-label">Free Tools</div><div style="font-family:var(--serif);font-size:17px;margin-bottom:5px">Run on $0/month</div><div style="font-family:var(--mono);font-size:11px;color:var(--muted)">40+ tools with real free tiers. Hosting, outreach, forms, animations — all covered.</div></div>
+    <div class="panel" style="cursor:pointer;border-top:3px solid var(--blue)" onclick="showPage('niches')"><div class="ac-label">Niches</div><div style="font-family:var(--serif);font-size:17px;margin-bottom:5px">20+ client profiles</div><div style="font-family:var(--mono);font-size:11px;color:var(--muted)">What each business type needs, what they pay, and exactly how to pitch them.</div></div>
+    <div class="panel" style="cursor:pointer;border-top:3px solid var(--amber)" onclick="showPage('scripts')"><div class="ac-label">Scripts</div><div style="font-family:var(--serif);font-size:17px;margin-bottom:5px">Copy-ready messages</div><div style="font-family:var(--mono);font-size:11px;color:var(--muted)">Cold emails, DMs, proposals, objection handles, upsells — one-click copy.</div></div>
+    <div class="panel" style="cursor:pointer;border-top:3px solid var(--red)" onclick="showPage('secrets')"><div class="ac-label">Secrets</div><div style="font-family:var(--serif);font-size:17px;margin-bottom:5px">Pro tricks revealed</div><div style="font-family:var(--mono);font-size:11px;color:var(--muted)">Screenshot audits, Google Maps scraping, retainer traps, hosting resell — hidden gold.</div></div>
+    <div class="panel" style="cursor:pointer;border-top:3px solid var(--faint)" onclick="showPage('calc')"><div class="ac-label">Calculator</div><div style="font-family:var(--serif);font-size:17px;margin-bottom:5px">Live project pricer</div><div style="font-family:var(--mono);font-size:11px;color:var(--muted)">Build any quote live. See take-home, tax set-aside, and projects needed to hit goal.</div></div>
+  </div>
+  <div class="info-bar accent"><strong>How to use:</strong> Navigate with the tabs above. Use Calculator to price jobs live. Copy scripts with one click. On mobile, the nav floats as a pill — scroll it to see all tabs.</div>
+</div></div>
+
+<!-- TOOLKIT -->
+<div class="page" id="page-toolkit"><div class="wrap">
+  <div class="page-hdr"><h2>Core <em>Toolkit</em></h2><p>Everything needed to run a freelance web business</p></div>
+  <div class="inner-tabs">
+    <button class="inner-tab active" onclick="swInner('tk','builders',this)">Builders</button>
+    <button class="inner-tab" onclick="swInner('tk','code',this)">Code Tools</button>
+    <button class="inner-tab" onclick="swInner('tk','hosting',this)">Hosting & Domains</button>
+    <button class="inner-tab" onclick="swInner('tk','design',this)">Design & Assets</button>
+  </div>
+  <div id="tk-builders">
+    <div class="info-bar blue">Master <strong>one or two builders</strong> first. Webflow + WordPress covers 80% of work. Add Shopify when e-commerce comes up.</div>
+    <table class="tbl mb16"><thead><tr><th>Platform</th><th>Best For</th><th>Learning</th><th>Price/mo</th><th>Your Rate</th></tr></thead><tbody>
+      <tr><td><strong>Webflow</strong></td><td>Startups, design-heavy sites</td><td><span class="badge badge-amber">Medium</span></td><td class="tbl-muted">$14–$39</td><td class="tbl-accent">$800–$5k+</td></tr>
+      <tr><td><strong>WordPress</strong></td><td>Blogs, biz sites, e-commerce</td><td><span class="badge badge-amber">Medium</span></td><td class="tbl-muted">~$5 hosting</td><td class="tbl-accent">$500–$3k</td></tr>
+      <tr><td><strong>Shopify</strong></td><td>E-commerce, product brands</td><td><span class="badge badge-green">Easy</span></td><td class="tbl-muted">$39–$105</td><td class="tbl-accent">$1,500–$5k</td></tr>
+      <tr><td><strong>Squarespace</strong></td><td>Photographers, creatives</td><td><span class="badge badge-green">Easy</span></td><td class="tbl-muted">$16–$49</td><td class="tbl-accent">$500–$2k</td></tr>
+      <tr><td><strong>Framer</strong></td><td>Startup landing pages</td><td><span class="badge badge-amber">Medium</span></td><td class="tbl-muted">$0–$30</td><td class="tbl-accent">$800–$4k</td></tr>
+      <tr><td><strong>Wix Studio</strong></td><td>Local biz, restaurants, salons</td><td><span class="badge badge-green">Easy</span></td><td class="tbl-muted">$17–$35</td><td class="tbl-accent">$400–$2k</td></tr>
+      <tr><td><strong>Pure HTML/CSS</strong></td><td>Full control, performance</td><td><span class="badge badge-red">Hard</span></td><td class="tbl-green">$0–$5</td><td class="tbl-accent">$500–$3k</td></tr>
+    </tbody></table>
+    <div class="g2">
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Use WordPress when...</span></div><ul class="step-list">
+        <li><div class="step-num">✓</div><div class="step-body">Client needs to update content themselves</div></li>
+        <li><div class="step-num">✓</div><div class="step-body">Blog or news site with many posts</div></li>
+        <li><div class="step-num">✓</div><div class="step-body">E-commerce with WooCommerce</div></li>
+        <li><div class="step-num">✓</div><div class="step-body">Budget-conscious client</div></li>
+      </ul></div>
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Use Webflow when...</span></div><ul class="step-list">
+        <li><div class="step-num">✓</div><div class="step-body">Client wants custom animations</div></li>
+        <li><div class="step-num">✓</div><div class="step-body">Design-forward startup or agency</div></li>
+        <li><div class="step-num">✓</div><div class="step-body">Clean handoff with Webflow Editor</div></li>
+        <li><div class="step-num">✓</div><div class="step-body">CMS-driven portfolio or blog</div></li>
+      </ul></div>
+    </div>
+  </div>
+  <div id="tk-code" style="display:none">
+    <div class="g2">
+      <div>
+        <div class="sec-hdr"><span class="sec-title">Code Editors</span></div>
+        <div class="panel">
+          <div class="result-row"><span class="result-label">VS Code</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> Industry standard. Extensions for everything.</span></div></div>
+          <div class="result-row"><span class="result-label">Cursor</span><div><span class="tool-tag ai">AI</span><span class="tool-tag paid">$20/mo</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> AI code editor. Builds components for you.</span></div></div>
+          <div class="result-row"><span class="result-label">Zed</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> Blazing fast, built-in AI, clean UI.</span></div></div>
+        </div>
+        <div class="sec-hdr"><span class="sec-title">Local Dev</span></div>
+        <div class="panel">
+          <div class="result-row"><span class="result-label">LocalWP</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> One-click local WordPress. Best WP dev tool.</span></div></div>
+          <div class="result-row"><span class="result-label">XAMPP</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> Apache/MySQL/PHP local server.</span></div></div>
+          <div class="result-row"><span class="result-label">FileZilla</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> FTP file transfer to any server.</span></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sec-hdr"><span class="sec-title">DevTools Tricks</span></div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">Learn these in Chrome DevTools</span></div><ul class="step-list">
+          <li><div class="step-num">1</div><div class="step-body"><strong>Inspect element</strong> — right-click any element. See exact CSS. Legal way to study any site.</div></li>
+          <li><div class="step-num">2</div><div class="step-body"><strong>Device toolbar</strong> (Ctrl+Shift+M) — preview on phone/tablet instantly.</div></li>
+          <li><div class="step-num">3</div><div class="step-body"><strong>Network tab</strong> — see what's slowing a site. Screenshot and sell as an audit.</div></li>
+          <li><div class="step-num">4</div><div class="step-body"><strong>Lighthouse</strong> — built-in performance, SEO, accessibility audit. Use for client reports.</div></li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+  <div id="tk-hosting" style="display:none">
+    <div class="info-bar green"><strong>Pro move:</strong> Buy a Hostinger reseller plan (~$15/mo), host all clients on it, charge each $20–$50/mo. 20 clients = $400–$1,000 passive monthly.</div>
+    <table class="tbl mb16"><thead><tr><th>Provider</th><th>Best For</th><th>Cost</th><th>Speed</th><th>Notes</th></tr></thead><tbody>
+      <tr><td><strong>Cloudflare Pages</strong></td><td>Static sites</td><td class="tbl-green">Free</td><td><span class="badge badge-green">Fastest</span></td><td class="tbl-muted">Edge network, unlimited bandwidth</td></tr>
+      <tr><td><strong>Netlify</strong></td><td>Static + forms</td><td class="tbl-green">Free tier</td><td><span class="badge badge-green">Very Fast</span></td><td class="tbl-muted">Drag-and-drop deploy. Free forms.</td></tr>
+      <tr><td><strong>Vercel</strong></td><td>React/Next.js</td><td class="tbl-green">Free tier</td><td><span class="badge badge-green">Very Fast</span></td><td class="tbl-muted">Best for Framer/React deploys.</td></tr>
+      <tr><td><strong>GitHub Pages</strong></td><td>Static portfolios</td><td class="tbl-green">Free</td><td><span class="badge badge-amber">Good</span></td><td class="tbl-muted">Free forever, custom domain support</td></tr>
+      <tr><td><strong>Hostinger</strong></td><td>WordPress, PHP</td><td class="tbl-muted">$3–$15/mo</td><td><span class="badge badge-amber">Good</span></td><td class="tbl-muted">Cheapest paid. Reseller plans available.</td></tr>
+      <tr><td><strong>Hetzner</strong></td><td>VPS</td><td class="tbl-muted">$4–$20/mo</td><td><span class="badge badge-green">Fast</span></td><td class="tbl-muted">Best value VPS. Huge in EU.</td></tr>
+    </tbody></table>
+    <div class="sec-hdr"><span class="sec-title">Domains</span></div>
+    <table class="tbl"><thead><tr><th>Registrar</th><th>Cost</th><th>Notes</th></tr></thead><tbody>
+      <tr><td><strong>Porkbun</strong></td><td class="tbl-green">$1–$10/yr first year</td><td class="tbl-muted">Cheapest registrar. Free WHOIS privacy. Hidden gem.</td></tr>
+      <tr><td><strong>Namecheap</strong></td><td class="tbl-muted">$8–$15/yr</td><td class="tbl-muted">Reliable, clean UI, free privacy protection.</td></tr>
+      <tr><td><strong>Cloudflare Registrar</strong></td><td class="tbl-green">At-cost pricing</td><td class="tbl-muted">Cheapest renewals. No markup ever.</td></tr>
+      <tr><td><strong>GoDaddy</strong></td><td class="tbl-amber">$2 first yr, $20+ renewal</td><td class="tbl-muted">Avoid. Bait-and-switch renewal pricing.</td></tr>
+    </tbody></table>
+  </div>
+  <div id="tk-design" style="display:none">
+    <div class="g2">
+      <div>
+        <div class="sec-hdr"><span class="sec-title">Design Tools</span></div>
+        <div class="panel">
+          <div class="result-row"><span class="result-label">Figma (free tier)</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> Wireframes, mockups, client presentations.</span></div></div>
+          <div class="result-row"><span class="result-label">Canva</span><div><span class="tool-tag free">Free tier</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> Logos, proposals, social posts.</span></div></div>
+          <div class="result-row"><span class="result-label">Coolors.co</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> Hit spacebar → instant palettes.</span></div></div>
+          <div class="result-row"><span class="result-label">Realtime Colors</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> Preview color schemes on a real site live.</span></div></div>
+        </div>
+        <div class="sec-hdr"><span class="sec-title">Free Stock Assets</span></div>
+        <div class="panel">
+          <div class="result-row"><span class="result-label">Unsplash</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> High-quality photos. Commercial use OK.</span></div></div>
+          <div class="result-row"><span class="result-label">Pexels</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> Photos + video. No attribution needed.</span></div></div>
+          <div class="result-row"><span class="result-label">unDraw</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> SVG illustrations. Change colors to match brand.</span></div></div>
+          <div class="result-row"><span class="result-label">Google Fonts</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> 1,000+ fonts. All web-safe.</span></div></div>
+          <div class="result-row"><span class="result-label">Heroicons</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> Beautiful SVG icon sets. MIT license.</span></div></div>
+          <div class="result-row"><span class="result-label">Lottiefiles</span><div><span class="tool-tag free">Free tier</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> Animated JSON icons. Very polished feel.</span></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sec-hdr"><span class="sec-title">Image Optimization</span></div>
+        <div class="panel">
+          <div class="result-row"><span class="result-label">Squoosh.app</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> Google tool. Compress to WebP. Best quality.</span></div></div>
+          <div class="result-row"><span class="result-label">TinyPNG</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> Compress PNG/JPG. 20 free per month.</span></div></div>
+          <div class="result-row"><span class="result-label">Remove.bg</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> Remove image backgrounds instantly.</span></div></div>
+        </div>
+        <div class="sec-hdr"><span class="sec-title">Testing</span></div>
+        <div class="panel">
+          <div class="result-row"><span class="result-label">PageSpeed Insights</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> Core Web Vitals. Essential for every site.</span></div></div>
+          <div class="result-row"><span class="result-label">GTmetrix</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> Detailed waterfall, video recording of load.</span></div></div>
+          <div class="result-row"><span class="result-label">Responsively App</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)"> See all device sizes simultaneously.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+<!-- AI STACK -->
+<div class="page" id="page-aistack"><div class="wrap">
+  <div class="page-hdr"><h2>The AI <em>Superstack</em></h2><p>Your unfair advantage — build sites 10× faster, pocket the difference</p></div>
+  <div class="info-bar accent"><strong>The secret:</strong> Clients pay for results, not hours. With AI, a $1,200 site takes 4 hours instead of 20. Your effective rate goes from $60/hr to $300/hr. Keep your prices — pocket the margin.</div>
+  <div class="g2 mb24">
+    <div class="panel" style="border-top:3px solid var(--accent)"><div class="panel-hdr"><span class="panel-label">Claude (Anthropic)</span><span class="tool-tag ai">AI</span></div>
+      <div style="font-family:var(--serif);font-size:16px;margin-bottom:8px">Your all-purpose co-pilot</div>
+      <div style="font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.9">• Write full HTML/CSS/JS pages from a prompt<br>• Generate proposals, contracts, client emails<br>• Debug broken code instantly<br>• Write all copy for client sites<br>• Answer any technical question on demand</div>
+      <div style="margin-top:10px"><span class="tool-tag free">Free tier</span><span class="tool-tag paid">Pro $20/mo</span></div>
+    </div>
+    <div class="panel" style="border-top:3px solid var(--blue)"><div class="panel-hdr"><span class="panel-label">Cursor</span><span class="tool-tag ai">AI</span></div>
+      <div style="font-family:var(--serif);font-size:16px;margin-bottom:8px">AI code editor</div>
+      <div style="font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.9">• Autocomplete entire components from comments<br>• Tab to accept suggestions while you type<br>• Ask AI to refactor or fix any selection<br>• Built on VS Code — zero learning curve<br>• Fastest way to write production HTML/CSS</div>
+      <div style="margin-top:10px"><span class="tool-tag free">Free tier</span><span class="tool-tag paid">$20/mo</span></div>
+    </div>
+    <div class="panel" style="border-top:3px solid var(--green)"><div class="panel-hdr"><span class="panel-label">v0.dev (Vercel)</span><span class="tool-tag ai">AI</span></div>
+      <div style="font-family:var(--serif);font-size:16px;margin-bottom:8px">UI from text prompt</div>
+      <div style="font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.9">• "Pricing page for a law firm" → React UI<br>• Export clean Tailwind + shadcn/ui<br>• Iterate by chatting with the result<br>• Client mockups in minutes<br>• Deploy straight to Vercel</div>
+      <div style="margin-top:10px"><span class="tool-tag free">Free tier</span></div>
+    </div>
+    <div class="panel" style="border-top:3px solid var(--amber)"><div class="panel-hdr"><span class="panel-label">Bolt.new</span><span class="tool-tag ai">AI</span></div>
+      <div style="font-family:var(--serif);font-size:16px;margin-bottom:8px">Full-stack in the browser</div>
+      <div style="font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.9">• Generate entire apps from one prompt<br>• Full code editor runs in browser — no setup<br>• Deploy with one click<br>• Great for React apps, dashboards, tools<br>• Use as starting point, customize after</div>
+      <div style="margin-top:10px"><span class="tool-tag free">Free tier</span><span class="tool-tag paid">$20/mo</span></div>
+    </div>
+  </div>
+  <div class="sec-hdr"><span class="sec-title">More AI Tools</span></div>
+  <table class="tbl mb24"><thead><tr><th>Tool</th><th>What It Does</th><th>Best Use</th><th>Cost</th></tr></thead><tbody>
+    <tr><td><strong>Relume</strong></td><td>AI sitemap + wireframe generator</td><td>Plan any site in 2 min before building</td><td class="tbl-green">Free tier</td></tr>
+    <tr><td><strong>Lovable.dev</strong></td><td>Full React apps from prompts</td><td>Complex web apps with auth, database</td><td class="tbl-green">Free tier</td></tr>
+    <tr><td><strong>Framer AI</strong></td><td>Generate entire Framer sites from text</td><td>Startup landing pages, fast turnaround</td><td class="tbl-green">Free tier</td></tr>
+    <tr><td><strong>Durable.co</strong></td><td>30-second AI website generator</td><td>Quick draft to show client in meeting</td><td class="tbl-green">Free</td></tr>
+    <tr><td><strong>ChatGPT / Gemini</strong></td><td>Copywriting, blog posts, FAQs</td><td>All text content for client sites</td><td class="tbl-green">Free tier</td></tr>
+    <tr><td><strong>Midjourney / Ideogram</strong></td><td>Custom hero images, graphics</td><td>Unique visuals when stock won't do</td><td class="tbl-muted">$10/mo</td></tr>
+    <tr><td><strong>Websim.ai</strong></td><td>Rapid site prototyping</td><td>Quick concepts to show clients</td><td class="tbl-green">Free</td></tr>
+  </tbody></table>
+  <div class="sec-hdr"><span class="sec-title">The 4-Hour Site Pipeline</span><span class="sec-sub">Build a professional site in one session</span></div>
+  <div class="panel"><ul class="step-list">
+    <li><div class="step-num">1</div><div class="step-body"><strong style="font-family:var(--mono)">Relume (10 min)</strong> — Generate sitemap and wireframe. Enter business type and goals.</div></li>
+    <li><div class="step-num">2</div><div class="step-body"><strong style="font-family:var(--mono)">Claude (20 min)</strong> — Write all the copy. Give it business name, niche, and goals. Get H1s, body text, CTAs, testimonials.</div></li>
+    <li><div class="step-num">3</div><div class="step-body"><strong style="font-family:var(--mono)">v0 or Bolt (30 min)</strong> — Generate the UI. Paste the copy in. Describe the design you want.</div></li>
+    <li><div class="step-num">4</div><div class="step-body"><strong style="font-family:var(--mono)">Cursor (60 min)</strong> — Customize. Adjust colors, fonts, spacing. Add animations.</div></li>
+    <li><div class="step-num">5</div><div class="step-body"><strong style="font-family:var(--mono)">Unsplash + Squoosh (20 min)</strong> — Source images, compress to WebP.</div></li>
+    <li><div class="step-num">6</div><div class="step-body"><strong style="font-family:var(--mono)">Netlify drag-and-drop (5 min)</strong> — Upload folder → live URL instantly.</div></li>
+    <li><div class="step-num">7</div><div class="step-body"><strong style="font-family:var(--mono)">Loom (10 min)</strong> — Record walkthrough for client review.</div></li>
+  </ul></div>
+</div></div>
+
+<!-- FREE TOOLS -->
+<div class="page" id="page-freetools"><div class="wrap">
+  <div class="page-hdr"><h2>Free Tools <em>Masterlist</em></h2><p>Run your entire business for $0/month</p></div>
+  <div class="inner-tabs">
+    <button class="inner-tab active" onclick="swInner('ft','hosting2',this)">Hosting & Deploy</button>
+    <button class="inner-tab" onclick="swInner('ft','outreach2',this)">Outreach & CRM</button>
+    <button class="inner-tab" onclick="swInner('ft','biz2',this)">Business Ops</button>
+    <button class="inner-tab" onclick="swInner('ft','anim',this)">CSS & Animation</button>
+    <button class="inner-tab" onclick="swInner('ft','forms2',this)">Forms & Booking</button>
+  </div>
+  <div id="ft-hosting2">
+    <table class="tbl"><thead><tr><th>Tool</th><th>What It Does</th><th>Why It's Great</th></tr></thead><tbody>
+      <tr><td><strong>Netlify</strong></td><td>Static hosting + forms</td><td class="tbl-muted">Drag-and-drop deploy. Free SSL. Free form backend. CDN included.</td></tr>
+      <tr><td><strong>Vercel</strong></td><td>Static + serverless</td><td class="tbl-muted">Best for React/Next.js. Auto-deploys from GitHub. Global CDN.</td></tr>
+      <tr><td><strong>GitHub Pages</strong></td><td>Static site hosting</td><td class="tbl-muted">Free forever. Custom domain. Perfect for portfolios.</td></tr>
+      <tr><td><strong>Cloudflare</strong></td><td>DNS + SSL + CDN + DDoS</td><td class="tbl-muted">Put every client site behind Cloudflare. Free speed + security layer.</td></tr>
+      <tr><td><strong>Cloudflare Pages</strong></td><td>Fast static hosting</td><td class="tbl-muted">Edge network. Fastest free static hosting available.</td></tr>
+      <tr><td><strong>InfinityFree</strong></td><td>PHP + MySQL hosting</td><td class="tbl-muted">Free PHP hosting with cPanel. Good for WordPress experiments.</td></tr>
+    </tbody></table>
+  </div>
+  <div id="ft-outreach2" style="display:none">
+    <table class="tbl"><thead><tr><th>Tool</th><th>What It Does</th><th>Free Limit</th></tr></thead><tbody>
+      <tr><td><strong>Hunter.io</strong></td><td>Find business email addresses</td><td class="tbl-green">25 searches/mo</td></tr>
+      <tr><td><strong>Apollo.io</strong></td><td>Lead gen + email finding</td><td class="tbl-green">50 exports/mo</td></tr>
+      <tr><td><strong>Streak CRM</strong></td><td>Gmail-based CRM, track leads in inbox</td><td class="tbl-green">Free forever</td></tr>
+      <tr><td><strong>HubSpot CRM</strong></td><td>Full CRM — contacts, deals, pipeline</td><td class="tbl-green">Free forever</td></tr>
+      <tr><td><strong>Calendly</strong></td><td>Booking link for discovery calls</td><td class="tbl-green">1 link free</td></tr>
+      <tr><td><strong>Loom</strong></td><td>Screen recording for client walkthroughs</td><td class="tbl-green">25 videos free</td></tr>
+      <tr><td><strong>LinkedIn (free)</strong></td><td>Connect with business owners, B2B outreach</td><td class="tbl-green">Free forever</td></tr>
+      <tr><td><strong>Alignable</strong></td><td>Small business networking — underused goldmine</td><td class="tbl-green">Free</td></tr>
+      <tr><td><strong>Google Alerts</strong></td><td>Get notified when new businesses open</td><td class="tbl-green">Free</td></tr>
+    </tbody></table>
+  </div>
+  <div id="ft-biz2" style="display:none">
+    <table class="tbl"><thead><tr><th>Tool</th><th>What It Does</th><th>Free Limit</th></tr></thead><tbody>
+      <tr><td><strong>Wave</strong></td><td>Invoicing + accounting + receipt scanning</td><td class="tbl-green">Free forever</td></tr>
+      <tr><td><strong>Notion</strong></td><td>Client portals, project management, SOPs</td><td class="tbl-green">Free forever</td></tr>
+      <tr><td><strong>Trello</strong></td><td>Kanban boards for managing projects</td><td class="tbl-green">Free forever</td></tr>
+      <tr><td><strong>DocHub</strong></td><td>PDF contracts + e-signatures</td><td class="tbl-green">Free tier</td></tr>
+      <tr><td><strong>Make.com</strong></td><td>Powerful automation between tools</td><td class="tbl-green">1,000 ops/mo free</td></tr>
+      <tr><td><strong>OBS Studio</strong></td><td>Screen + video recording, no watermark</td><td class="tbl-green">Free forever</td></tr>
+      <tr><td><strong>Hotjar</strong></td><td>Heatmaps + session recordings</td><td class="tbl-green">35 sessions/day free</td></tr>
+    </tbody></table>
+  </div>
+  <div id="ft-anim" style="display:none">
+    <div class="info-bar blue">These make your sites look premium. Clients can't tell if you used a $200/hr motion designer or a free CSS library.</div>
+    <table class="tbl"><thead><tr><th>Tool</th><th>What It Does</th><th>How to Use</th></tr></thead><tbody>
+      <tr><td><strong>Animista</strong></td><td>CSS animation library, 100+ presets</td><td class="tbl-muted">Pick animation, copy CSS, paste. animista.net</td></tr>
+      <tr><td><strong>AOS (Animate on Scroll)</strong></td><td>Scroll-triggered fade/slide animations</td><td class="tbl-muted">Add data-aos="fade-up" to any element. One script tag.</td></tr>
+      <tr><td><strong>GSAP (free tier)</strong></td><td>Pro-grade JS animations</td><td class="tbl-muted">Scroll triggers, timelines, morphs. Used by top agencies.</td></tr>
+      <tr><td><strong>Lottiefiles</strong></td><td>JSON animated icons</td><td class="tbl-muted">Drop in with one script tag. Looks polished instantly.</td></tr>
+      <tr><td><strong>Splitting.js</strong></td><td>Split text into chars/words for animation</td><td class="tbl-muted">Animate each letter individually. Very impressive to clients.</td></tr>
+    </tbody></table>
+  </div>
+  <div id="ft-forms2" style="display:none">
+    <div class="info-bar accent">Never build a backend just for a contact form. These tools handle it for free — no server needed.</div>
+    <table class="tbl"><thead><tr><th>Tool</th><th>Free Limit</th><th>Notes</th></tr></thead><tbody>
+      <tr><td><strong>Web3Forms</strong></td><td class="tbl-green">250 submissions/mo</td><td class="tbl-muted">Best free form backend. No account needed. One API key.</td></tr>
+      <tr><td><strong>Formspree</strong></td><td class="tbl-green">50 submissions/mo</td><td class="tbl-muted">Simple setup. Email notifications. File uploads.</td></tr>
+      <tr><td><strong>Netlify Forms</strong></td><td class="tbl-green">100 submissions/mo</td><td class="tbl-muted">Works automatically on Netlify-hosted sites.</td></tr>
+      <tr><td><strong>Tawk.to</strong></td><td class="tbl-green">Free forever</td><td class="tbl-muted">Live chat widget. Free forever. Easy embed.</td></tr>
+      <tr><td><strong>Calendly</strong></td><td class="tbl-green">1 event type</td><td class="tbl-muted">Embed booking directly in site. Removes friction.</td></tr>
+    </tbody></table>
+  </div>
+</div></div>
+<!-- PRICING -->
+<div class="page" id="page-pricing"><div class="wrap">
+  <div class="page-hdr"><h2>Pricing <em>Guide</em></h2><p>What to charge, when to charge it, and why cheap hurts you</p></div>
+  <div class="info-bar amber"><strong>Psychology:</strong> "$150 website" signals amateur. "$1,200 website" signals professional investment. Price at the level you want to attract.</div>
+  <div class="sec-hdr"><span class="sec-title">Project Pricing</span><span class="sec-sub">With AI tools factored in</span></div>
+  <table class="tbl mb24"><thead><tr><th>Project Type</th><th>Price Range</th><th>Time (w/ AI)</th><th>Time (manual)</th><th>Notes</th></tr></thead><tbody>
+    <tr><td><strong>Landing page</strong></td><td class="tbl-accent">$300–$800</td><td class="tbl-green">2–4 hrs</td><td class="tbl-muted">6–10 hrs</td><td class="tbl-muted">One page, CTA, contact form.</td></tr>
+    <tr><td><strong>Small biz site (3–5 pages)</strong></td><td class="tbl-accent">$800–$2,500</td><td class="tbl-green">4–8 hrs</td><td class="tbl-muted">12–25 hrs</td><td class="tbl-muted">Bread and butter work.</td></tr>
+    <tr><td><strong>Portfolio site</strong></td><td class="tbl-accent">$500–$1,500</td><td class="tbl-green">3–6 hrs</td><td class="tbl-muted">8–15 hrs</td><td class="tbl-muted">Gallery, about, contact.</td></tr>
+    <tr><td><strong>E-commerce (Shopify)</strong></td><td class="tbl-accent">$1,500–$5,000</td><td class="tbl-green">8–16 hrs</td><td class="tbl-muted">25–50 hrs</td><td class="tbl-muted">Product setup, checkout, payments.</td></tr>
+    <tr><td><strong>Restaurant site</strong></td><td class="tbl-accent">$800–$2,500</td><td class="tbl-green">4–8 hrs</td><td class="tbl-muted">10–20 hrs</td><td class="tbl-muted">Menu, reservations, maps, hours.</td></tr>
+    <tr><td><strong>Booking / service site</strong></td><td class="tbl-accent">$1,000–$3,000</td><td class="tbl-green">6–12 hrs</td><td class="tbl-muted">15–30 hrs</td><td class="tbl-muted">Salons, trainers, coaches.</td></tr>
+    <tr><td><strong>Custom web app</strong></td><td class="tbl-accent">$3,000–$15,000</td><td class="tbl-muted">20–60 hrs</td><td class="tbl-muted">60–200 hrs</td><td class="tbl-muted">Auth, database, logic. Dev skills needed.</td></tr>
+    <tr><td><strong>Startup MVP site</strong></td><td class="tbl-accent">$1,000–$4,000</td><td class="tbl-green">6–14 hrs</td><td class="tbl-muted">20–40 hrs</td><td class="tbl-muted">Investor-ready landing page.</td></tr>
+  </tbody></table>
+  <div class="sec-hdr"><span class="sec-title">Recurring Revenue</span><span class="sec-sub">Every project should end with one of these</span></div>
+  <div class="g3 mb24">
+    <div class="ac-card"><div class="ac-label">Hosting Resell</div><div class="ac-val">$20–$50/mo</div><div class="ac-sub">Per client. Buy at $3–$5, charge $20–$50. 20 clients = $400–$1,000 passive/mo.</div></div>
+    <div class="ac-card"><div class="ac-label">Maintenance Retainer</div><div class="ac-val">$50–$300/mo</div><div class="ac-sub">Updates, backups, security, small edits. 10 clients = $500–$3,000/mo.</div></div>
+    <div class="ac-card"><div class="ac-label">SEO Retainer</div><div class="ac-val">$300–$1,500/mo</div><div class="ac-sub">Monthly reporting, content, link building. Even basic SEO commands this.</div></div>
+  </div>
+  <div class="g2">
+    <div class="panel"><div class="panel-hdr"><span class="panel-label">Value-based pricing — the mindset shift</span></div><ul class="step-list">
+      <li><div class="step-num">1</div><div class="step-body"><strong>Don't charge for hours.</strong> A site that brings 10 new customers/mo at $500 each = $5,000/mo to the client. Why charge $600 because it took you 6 hours?</div></li>
+      <li><div class="step-num">2</div><div class="step-body"><strong>Ask about their business first.</strong> A lawyer at $400/hr values their time differently than a new salon owner. Adjust accordingly.</div></li>
+      <li><div class="step-num">3</div><div class="step-body"><strong>Anchor high.</strong> Present premium option first. Makes the middle option feel like a deal.</div></li>
+      <li><div class="step-num">4</div><div class="step-body"><strong>Sell the result.</strong> "A site that gets you more bookings" beats "5-page HTML site."</div></li>
+    </ul></div>
+    <div>
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Always take 50% upfront — no exceptions</span></div>
+        <div class="result-row"><span class="result-label">Why it protects you</span><span style="font-family:var(--mono);font-size:11px">Filters time-wasters. No free work ever.</span></div>
+        <div class="result-row"><span class="result-label">If they refuse</span><span style="font-family:var(--mono);font-size:11px">Walk away. Red flag client.</span></div>
+        <div class="result-row"><span class="result-label">What to say</span><span style="font-family:var(--mono);font-size:11px">"I require 50% to begin — standard practice."</span></div>
+        <div class="result-row"><span class="result-label">Remainder due</span><span style="font-family:var(--mono);font-size:11px">Before launch, not after.</span></div>
+      </div>
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Charge more for these</span></div>
+        <div class="result-row"><span class="result-label">Vague brief</span><span style="font-family:var(--mono);font-size:11px">+20% scope creep buffer</span></div>
+        <div class="result-row"><span class="result-label">Rush deadline</span><span style="font-family:var(--mono);font-size:11px">+30–50% rush fee</span></div>
+        <div class="result-row"><span class="result-label">Multiple decision-makers</span><span style="font-family:var(--mono);font-size:11px">+revision allowance</span></div>
+        <div class="result-row"><span class="result-label">Fired 2 designers</span><span style="font-family:var(--mono);font-size:11px">Run or add 50% buffer</span></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- NICHES -->
+<div class="page" id="page-niches"><div class="wrap">
+  <div class="page-hdr"><h2>Client <em>Niches</em></h2><p>Click any niche for full profile, pricing, and pitch strategy</p></div>
+  <div class="niche-grid" id="nicheGrid"></div>
+</div></div>
+<div class="detail-overlay" id="nicheModal" onclick="closeNicheModal(event)">
+  <div class="detail-modal" id="nicheModalBody"></div>
+</div>
+
+<!-- GET CLIENTS -->
+<div class="page" id="page-clients"><div class="wrap">
+  <div class="page-hdr"><h2>Get <em>Clients</em></h2><p>Every channel ranked by effectiveness for beginners</p></div>
+  <div class="inner-tabs">
+    <button class="inner-tab active" onclick="swInner('gc','local',this)">Local Outreach</button>
+    <button class="inner-tab" onclick="swInner('gc','online',this)">Online Platforms</button>
+    <button class="inner-tab" onclick="swInner('gc','social',this)">Social Media</button>
+    <button class="inner-tab" onclick="swInner('gc','referral',this)">Referrals</button>
+    <button class="inner-tab" onclick="swInner('gc','portfolio2',this)">Portfolio from Zero</button>
+  </div>
+  <div id="gc-local">
+    <div class="info-bar green"><strong>Local outreach is the fastest path to your first client.</strong> Go where businesses exist, lead with "I noticed you don't have a website," show a demo. Works with zero experience.</div>
+    <div class="g2">
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Where to find local businesses</span></div>
+        <div class="result-row"><span class="result-label">Google Maps</span><span style="font-family:var(--mono);font-size:11px">"[niche] near [city]" — filter by no website</span></div>
+        <div class="result-row"><span class="result-label">Yelp</span><span style="font-family:var(--mono);font-size:11px">Find businesses with bad photos and no website link</span></div>
+        <div class="result-row"><span class="result-label">Facebook Groups</span><span style="font-family:var(--mono);font-size:11px">Local business groups, buy/sell, community pages</span></div>
+        <div class="result-row"><span class="result-label">Nextdoor</span><span style="font-family:var(--mono);font-size:11px">Neighborhood businesses — very low competition</span></div>
+        <div class="result-row"><span class="result-label">Chamber of Commerce</span><span style="font-family:var(--mono);font-size:11px">Business owner networks, monthly meetups</span></div>
+        <div class="result-row"><span class="result-label">BNI Groups</span><span style="font-family:var(--mono);font-size:11px">Business networking. One web designer per chapter.</span></div>
+        <div class="result-row"><span class="result-label">Alignable</span><span style="font-family:var(--mono);font-size:11px">Underrated small biz network. Easy to stand out.</span></div>
+      </div>
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">The approach that converts</span></div><ul class="step-list">
+        <li><div class="step-num">1</div><div class="step-body"><strong>Build a demo first.</strong> Before outreach, build a fake version of their site. 1–2 hrs with AI. Show it on the call.</div></li>
+        <li><div class="step-num">2</div><div class="step-body"><strong>Call, don't email first.</strong> Calls convert 3–5× better. Emails are for follow-up.</div></li>
+        <li><div class="step-num">3</div><div class="step-body"><strong>Lead with the problem.</strong> "I noticed you don't show up on Google" lands better than "I make websites."</div></li>
+        <li><div class="step-num">4</div><div class="step-body"><strong>Walk in person.</strong> Showing up gets 10× more attention than any digital outreach. Bring a printed mockup.</div></li>
+      </ul></div>
+    </div>
+  </div>
+  <div id="gc-online" style="display:none">
+    <div class="g2">
+      <div>
+        <div class="sec-hdr"><span class="sec-title">Freelance Marketplaces</span></div>
+        <table class="tbl"><thead><tr><th>Platform</th><th>Best For</th><th>Fee</th><th>Difficulty</th></tr></thead><tbody>
+          <tr><td><strong>Upwork</strong></td><td>Long-term clients</td><td class="tbl-amber">10–20%</td><td><span class="badge badge-amber">Medium</span></td></tr>
+          <tr><td><strong>Fiverr</strong></td><td>Quick wins, packages</td><td class="tbl-amber">20%</td><td><span class="badge badge-green">Easy</span></td></tr>
+          <tr><td><strong>Contra</strong></td><td>Creative, 0% fee</td><td class="tbl-green">0%</td><td><span class="badge badge-green">Easy</span></td></tr>
+          <tr><td><strong>Toptal</strong></td><td>Top 3% — premium rates</td><td class="tbl-green">0%</td><td><span class="badge badge-red">Hard</span></td></tr>
+          <tr><td><strong>Bark.com</strong></td><td>Inbound local requests</td><td class="tbl-amber">Credits</td><td><span class="badge badge-green">Easy</span></td></tr>
+        </tbody></table>
+      </div>
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Fiverr — get your first 5 sales</span></div><ul class="check-list">
+        <li class="check-item"><input type="checkbox"><label>Niche your gig: "Wix website for hair salons" not "I make websites"</label></li>
+        <li class="check-item"><input type="checkbox"><label>Price starter gig $50–$100 to get first reviews</label></li>
+        <li class="check-item"><input type="checkbox"><label>Show real portfolio samples in gig images</label></li>
+        <li class="check-item"><input type="checkbox"><label>Respond within 1 hour — Fiverr rewards speed</label></li>
+        <li class="check-item"><input type="checkbox"><label>Raise prices every 10 reviews</label></li>
+      </ul></div>
+    </div>
+  </div>
+  <div id="gc-social" style="display:none">
+    <div class="g2">
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Instagram — best platform for web designers</span></div><ul class="step-list">
+        <li><div class="step-num">1</div><div class="step-body">Post before/after screenshots. "Built this barber shop site in 3 hours using AI."</div></li>
+        <li><div class="step-num">2</div><div class="step-body">Search local business hashtags. DM businesses with no website link in bio.</div></li>
+        <li><div class="step-num">3</div><div class="step-body">Post Reels of your build process. Screen recordings get massive reach.</div></li>
+      </ul></div>
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">TikTok / YouTube Shorts</span></div><ul class="step-list">
+        <li><div class="step-num">1</div><div class="step-body">"I built a [business type] website in 1 hour for $500" — this format goes viral constantly.</div></li>
+        <li><div class="step-num">2</div><div class="step-body">"How I use Claude to build client sites" — huge engagement from curious viewers.</div></li>
+        <li><div class="step-num">3</div><div class="step-body">Consistency beats quality early on. Post 3× per week for 90 days minimum.</div></li>
+      </ul></div>
+    </div>
+  </div>
+  <div id="gc-referral" style="display:none">
+    <div class="info-bar green"><strong>Referrals are the highest-quality leads.</strong> They arrive pre-sold, ready to buy, and rarely haggle on price.</div>
+    <div class="g2">
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Build a referral system</span></div><ul class="step-list">
+        <li><div class="step-num">1</div><div class="step-body">After every project: "Do you know anyone who could use a website?" — 30% know someone.</div></li>
+        <li><div class="step-num">2</div><div class="step-body">Offer $100–$200 cash per referral that converts. Makes clients active advocates.</div></li>
+        <li><div class="step-num">3</div><div class="step-body">Give clients a shareable Calendly link. Frictionless to refer.</div></li>
+      </ul></div>
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Strategic partners (they send you work)</span></div>
+        <div class="result-row"><span class="result-label">Graphic designers</span><span style="font-family:var(--mono);font-size:11px">They design, you build. Both refer each other.</span></div>
+        <div class="result-row"><span class="result-label">Photographers</span><span style="font-family:var(--mono);font-size:11px">Every photographer needs a portfolio site.</span></div>
+        <div class="result-row"><span class="result-label">Marketing agencies</span><span style="font-family:var(--mono);font-size:11px">Subcontract web work from agencies.</span></div>
+        <div class="result-row"><span class="result-label">Business coaches</span><span style="font-family:var(--mono);font-size:11px">Their clients always need websites.</span></div>
+        <div class="result-row"><span class="result-label">Bookkeepers / CPAs</span><span style="font-family:var(--mono);font-size:11px">They see business owners regularly.</span></div>
+      </div>
+    </div>
+  </div>
+  <div id="gc-portfolio2" style="display:none">
+    <div class="info-bar blue"><strong>No clients yet? Build fake ones.</strong> Nobody knows your first 5 portfolio sites were spec projects. They just see quality work.</div>
+    <div class="g2">
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Build portfolio from zero</span></div><ul class="step-list">
+        <li><div class="step-num">1</div><div class="step-body"><strong>Spec sites.</strong> Pick 3 real local businesses with bad/no sites. Build a better version. Use in portfolio.</div></li>
+        <li><div class="step-num">2</div><div class="step-body"><strong>Friends and family.</strong> Build for $50 in exchange for a testimonial and Google review.</div></li>
+        <li><div class="step-num">3</div><div class="step-body"><strong>Quality over quantity.</strong> 3 excellent sites beats 15 mediocre ones every time.</div></li>
+        <li><div class="step-num">4</div><div class="step-body"><strong>Your own domain.</strong> yourname.com — no free subdomain. You're a web designer, own your presence.</div></li>
+      </ul></div>
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Your portfolio site must have</span></div><ul class="check-list">
+        <li class="check-item"><input type="checkbox"><label>Clear headline: "I build websites for [niche] businesses"</label></li>
+        <li class="check-item"><input type="checkbox"><label>3–5 portfolio examples with live links</label></li>
+        <li class="check-item"><input type="checkbox"><label>Testimonials (real or written for spec clients)</label></li>
+        <li class="check-item"><input type="checkbox"><label>Service packages with prices (builds trust)</label></li>
+        <li class="check-item"><input type="checkbox"><label>Contact form or Calendly booking link</label></li>
+        <li class="check-item"><input type="checkbox"><label>Your face — builds trust faster than anything</label></li>
+        <li class="check-item"><input type="checkbox"><label>Mobile perfect — you're a web designer, after all</label></li>
+      </ul></div>
+    </div>
+  </div>
+</div></div>
+<!-- SCRIPTS -->
+<div class="page" id="page-scripts"><div class="wrap">
+  <div class="page-hdr"><h2>Client <em>Scripts</em></h2><p>Copy-ready messages for every situation</p></div>
+  <div class="inner-tabs">
+    <button class="inner-tab active" onclick="swInner('sc','cold',this)">Cold Outreach</button>
+    <button class="inner-tab" onclick="swInner('sc','objections',this)">Objections</button>
+    <button class="inner-tab" onclick="swInner('sc','proposal2',this)">Proposals</button>
+    <button class="inner-tab" onclick="swInner('sc','delivery',this)">Delivery & Launch</button>
+    <button class="inner-tab" onclick="swInner('sc','upsell',this)">Upsell Scripts</button>
+  </div>
+  <div id="sc-cold">
+    <div class="g2">
+      <div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">Cold email — short version (highest reply rate)</span><button class="cbtn" onclick="copyEl(this,'ce1')">Copy</button></div>
+          <div class="script-box" id="ce1">Subject: Quick question about [Business Name]'s website
+
+Hi [First Name],
+
+I help local [business type] businesses get professional websites that rank on Google and bring in more calls.
+
+I noticed [Business Name] doesn't have a website yet — I'd love to show you a free mockup of what yours could look like.
+
+Would it be okay if I sent one over?
+
+— [Your Name]
+[Phone] | [Website]</div></div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">Instagram DM opener</span><button class="cbtn" onclick="copyEl(this,'dm1')">Copy</button></div>
+          <div class="script-box" id="dm1">Hey! Came across [Business Name] and love what you're doing.
+
+I noticed you don't have a website yet — I build simple, professional sites for local businesses like yours that help you get found on Google.
+
+Would you want me to put together a free preview of what yours could look like? No cost, no commitment.</div></div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">Cold call opener (no website)</span><button class="cbtn" onclick="copyEl(this,'cc1')">Copy</button></div>
+          <div class="script-box" id="cc1">Hey, is this [Business Name]?
+
+My name is [Name] — I'm a local web designer. Quick question: do you currently have a website?
+
+[If NO:]
+I build simple, mobile-friendly websites for local businesses — the kind that help you get more calls from Google. I can show you a free preview of what yours could look like. Would that be worth 2 minutes?
+
+[If yes/sure:]
+Can I get your email or number so I can send you a quick mockup? Totally free — no commitment.
+
+[If busy:]
+No worries. Can I send a quick text with an example? Takes 10 seconds to look at.</div></div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">Inquiry response (reply within 5 min)</span><button class="cbtn" onclick="copyEl(this,'ir1')">Copy</button></div>
+          <div class="script-box" id="ir1">Hi [Name]! Thanks for reaching out — I'd love to help.
+
+Quick questions before I put together a proposal:
+
+1. What kind of business are you running?
+2. Do you have a logo / brand colors already?
+3. Main goal — more calls, bookings, or sales?
+4. Budget range in mind?
+
+Once I know this, I'll send a proposal same day. 🚀</div></div>
+      </div>
+    </div>
+  </div>
+  <div id="sc-objections" style="display:none">
+    <div class="panel"><div class="panel-hdr"><span class="panel-label">Objection handling — full reference</span></div>
+      <table class="tbl"><thead><tr><th>Objection</th><th>Your Response</th></tr></thead><tbody>
+        <tr><td class="tbl-accent">"Too expensive"</td><td>If this site brings in just 1–2 new customers a month, it pays for itself and keeps paying. Most clients see ROI within 60 days.</td></tr>
+        <tr><td class="tbl-accent">"I'll think about it"</td><td>Totally fair. Can I check back with you on [specific day]? I'll hold your spot until then.</td></tr>
+        <tr><td class="tbl-accent">"We already have a website"</td><td>That's great! Mind if I take a quick look? I can tell you in 30 seconds if it's optimized for mobile and Google. Totally free.</td></tr>
+        <tr><td class="tbl-accent">"We use Instagram instead"</td><td>Instagram is great — but what shows up when someone Googles your business name? A website gives you professional credibility 24/7.</td></tr>
+        <tr><td class="tbl-accent">"Can you do it cheaper?"</td><td>I could do a smaller starter version for [lower price] — one page with your core info. We can always add pages later. Does that work?</td></tr>
+        <tr><td class="tbl-accent">"I already have someone"</td><td>Great! If you ever need a second opinion or backup — I'm always happy to help. Can I send my contact just in case?</td></tr>
+        <tr><td class="tbl-accent">"I'll do it myself"</td><td>Totally respect that! If you ever get stuck or want a professional polish — I'm here. No pressure.</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+  <div id="sc-proposal2" style="display:none">
+    <div class="g2">
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Proposal structure</span></div><ul class="step-list">
+        <li><div class="step-num">1</div><div class="step-body"><strong>The Problem</strong> — Reflect back what they told you. Shows you listened.</div></li>
+        <li><div class="step-num">2</div><div class="step-body"><strong>The Solution</strong> — What you'll build. List every page/feature specifically.</div></li>
+        <li><div class="step-num">3</div><div class="step-body"><strong>The Investment</strong> — Price, payment terms, timeline.</div></li>
+        <li><div class="step-num">4</div><div class="step-body"><strong>Next Steps</strong> — Clear CTA. "Reply YES and I'll send the contract."</div></li>
+      </ul></div>
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Proposal email</span><button class="cbtn" onclick="copyEl(this,'prop1')">Copy</button></div>
+        <div class="script-box" id="prop1">Hi [Name],
+
+Thanks for our call! Here's what I'm proposing for [Business Name]:
+
+🎯 WHAT I'LL BUILD:
+• Homepage with clear call-to-action
+• Services page (your 3 main offerings)
+• About page + team photo section
+• Contact page with form + Google Maps
+• Mobile-optimized throughout
+• Basic SEO setup (meta titles, descriptions)
+
+💰 INVESTMENT: $[price]
+• 50% ($[half]) due to start
+• 50% ($[half]) due on launch day
+• Timeline: [X] business days
+
+📦 AFTER LAUNCH:
+Optional: hosting + maintenance at $[X]/mo — I handle everything.
+
+Ready to move forward? Reply YES and I'll send the contract + invoice.
+
+— [Your Name]</div></div>
+    </div>
+  </div>
+  <div id="sc-delivery" style="display:none">
+    <div class="g2">
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Delivering the first draft</span><button class="cbtn" onclick="copyEl(this,'draft1')">Copy</button></div>
+        <div class="script-box" id="draft1">Hi [Name]! 🎉
+
+Your website draft is ready for review!
+
+Preview link: [URL]
+
+Quick Loom walkthrough so you can see everything:
+👉 [Loom video link]
+
+Feedback I'd love:
+1. Does the feel match your brand?
+2. Is the wording accurate?
+3. Any photos to swap out?
+
+Reply with notes and I'll turn revisions around in 24 hours.
+(Contract includes up to [X] revision rounds.)</div></div>
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Launch + review request</span><button class="cbtn" onclick="copyEl(this,'launch1')">Copy</button></div>
+        <div class="script-box" id="launch1">Hi [Name]! 🚀
+
+[Business Name]'s new website is officially LIVE!
+
+🌐 [URL]
+
+Two quick asks:
+
+1. ⭐ Would you mind leaving a Google review? Means the world:
+[Your Google Review Link]
+
+2. 👥 Know anyone who could use a website? I pay $[X] for every referral that becomes a client.
+
+Thank you — so excited to see your business grow!
+
+— [Your Name]</div></div>
+    </div>
+  </div>
+  <div id="sc-upsell" style="display:none">
+    <div class="g2">
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Maintenance retainer pitch</span><button class="cbtn" onclick="copyEl(this,'ret1')">Copy</button></div>
+        <div class="script-box" id="ret1">Hi [Name],
+
+Now that your site is live — I wanted to mention my monthly care plan.
+
+For just $[X]/month I handle:
+✅ Hosting (fast, secure servers)
+✅ Weekly backups
+✅ Security monitoring
+✅ Up to [X] small content updates/mo
+✅ Same-day response if anything breaks
+
+Most clients choose this so they never worry about the tech side.
+
+Want me to add it today?</div></div>
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">SEO upsell</span><button class="cbtn" onclick="copyEl(this,'seo1')">Copy</button></div>
+        <div class="script-box" id="seo1">Hi [Name],
+
+Quick check — [Business Name] isn't showing up on page 1 for "[their service] in [city]" yet — meaning you're missing potential customers actively searching.
+
+My monthly SEO package at $[X]/mo includes:
+• Monthly blog content (Google loves fresh content)
+• Keyword optimization
+• Google Business Profile management
+• Monthly ranking report
+
+Most clients see real movement in 60–90 days.
+
+Want me to put together a quick plan?</div></div>
+    </div>
+  </div>
+</div></div>
+
+<!-- SITE ANATOMY -->
+<div class="page" id="page-anatomy"><div class="wrap">
+  <div class="page-hdr"><h2>Site <em>Anatomy</em></h2><p>Every element explained — what it is, why it matters, how to build it</p></div>
+  <div id="anatomyList"></div>
+</div></div>
+<!-- PLATFORMS -->
+<div class="page" id="page-platforms"><div class="wrap">
+  <div class="page-hdr"><h2>Platform <em>Deep Dives</em></h2><p>How to build on each platform — pros, cons, plugins, tips</p></div>
+  <div class="inner-tabs">
+    <button class="inner-tab active" onclick="swInner('pl','wp',this)">WordPress</button>
+    <button class="inner-tab" onclick="swInner('pl','wf',this)">Webflow</button>
+    <button class="inner-tab" onclick="swInner('pl','sh',this)">Shopify</button>
+    <button class="inner-tab" onclick="swInner('pl','ss',this)">Squarespace</button>
+    <button class="inner-tab" onclick="swInner('pl','fr',this)">Framer</button>
+    <button class="inner-tab" onclick="swInner('pl','ht',this)">Pure HTML</button>
+  </div>
+  <div id="pl-wp">
+    <div class="g2">
+      <div>
+        <div class="ac-card"><div class="ac-label">WordPress</div><div class="ac-val">Best for: Blogs, business sites, e-commerce</div><div class="ac-sub">Runs 43% of all websites. Huge plugin ecosystem. CMS makes it easy for clients to update.</div></div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">Essential plugins</span></div>
+          <div class="result-row"><span class="result-label">Elementor</span><span style="font-family:var(--mono);font-size:11px">Visual page builder. Drag and drop.</span></div>
+          <div class="result-row"><span class="result-label">Yoast SEO</span><span style="font-family:var(--mono);font-size:11px">Meta tags, sitemaps, readability.</span></div>
+          <div class="result-row"><span class="result-label">WooCommerce</span><span style="font-family:var(--mono);font-size:11px">Full e-commerce. Free core plugin.</span></div>
+          <div class="result-row"><span class="result-label">UpdraftPlus</span><span style="font-family:var(--mono);font-size:11px">Automated backups to Google Drive.</span></div>
+          <div class="result-row"><span class="result-label">Wordfence</span><span style="font-family:var(--mono);font-size:11px">Security firewall + malware scanner.</span></div>
+          <div class="result-row"><span class="result-label">WP Rocket</span><span style="font-family:var(--mono);font-size:11px">Caching + speed. Worth the $59.</span></div>
+        </div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">Best free themes</span></div>
+          <div class="result-row"><span class="result-label">Astra</span><span style="font-family:var(--mono);font-size:11px">Lightning fast. Works with any builder.</span></div>
+          <div class="result-row"><span class="result-label">Kadence</span><span style="font-family:var(--mono);font-size:11px">Excellent free tier. Full-site editing.</span></div>
+          <div class="result-row"><span class="result-label">GeneratePress</span><span style="font-family:var(--mono);font-size:11px">Minimalist, super fast, SEO-friendly.</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">WordPress tips</span></div><ul class="step-list">
+          <li><div class="step-num">1</div><div class="step-body">Use LocalWP for local dev — never build on live site.</div></li>
+          <li><div class="step-num">2</div><div class="step-body">Create child themes before customizing any parent theme.</div></li>
+          <li><div class="step-num">3</div><div class="step-body">Limit to 10–15 plugins max. Each adds bloat + security risk.</div></li>
+          <li><div class="step-num">4</div><div class="step-body">Put every WP site behind Cloudflare — free SSL, speed, DDoS protection.</div></li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+  <div id="pl-wf" style="display:none">
+    <div class="g2">
+      <div>
+        <div class="ac-card"><div class="ac-label">Webflow</div><div class="ac-val">Best for: Design-heavy sites, startups, agencies</div><div class="ac-sub">No-code but generates real CSS. Cleanest builder output. Webflow University is free and excellent.</div></div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">Key Webflow concepts</span></div>
+          <div class="result-row"><span class="result-label">Designer</span><span style="font-family:var(--mono);font-size:11px">Where you build. CSS in a visual interface.</span></div>
+          <div class="result-row"><span class="result-label">CMS Collections</span><span style="font-family:var(--mono);font-size:11px">Dynamic content — blog posts, portfolio items.</span></div>
+          <div class="result-row"><span class="result-label">Editor Mode</span><span style="font-family:var(--mono);font-size:11px">Client edits text without breaking layout.</span></div>
+          <div class="result-row"><span class="result-label">Interactions</span><span style="font-family:var(--mono);font-size:11px">Scroll, click, hover animations. Built-in.</span></div>
+          <div class="result-row"><span class="result-label">Relume Library</span><span style="font-family:var(--mono);font-size:11px">Cloneable components. Copy sections in seconds.</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">Webflow workflow</span></div><ul class="step-list">
+          <li><div class="step-num">1</div><div class="step-body">Use Relume to generate sitemap + wireframe</div></li>
+          <li><div class="step-num">2</div><div class="step-body">Clone a Relume component kit into Webflow</div></li>
+          <li><div class="step-num">3</div><div class="step-body">Customize colors, fonts, content</div></li>
+          <li><div class="step-num">4</div><div class="step-body">Add Interactions for scroll animations</div></li>
+          <li><div class="step-num">5</div><div class="step-body">Publish to subdomain for client review</div></li>
+          <li><div class="step-num">6</div><div class="step-body">Connect custom domain, give client Editor access</div></li>
+        </ul></div>
+        <div class="info-bar blue">Webflow University (webflow.com/university) is free and the best web design education available. Complete 101 before any client project.</div>
+      </div>
+    </div>
+  </div>
+  <div id="pl-sh" style="display:none">
+    <div class="g2">
+      <div>
+        <div class="ac-card"><div class="ac-label">Shopify</div><div class="ac-val">Best for: E-commerce — prefer over WooCommerce for most clients</div><div class="ac-sub">Hosted, fast, secure, handles payment processing. Shopify Partners earn revenue share.</div></div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">Best free themes</span></div>
+          <div class="result-row"><span class="result-label">Dawn</span><span style="font-family:var(--mono);font-size:11px">Default. Fast, minimal, works for anything.</span></div>
+          <div class="result-row"><span class="result-label">Sense</span><span style="font-family:var(--mono);font-size:11px">Clean, lifestyle. Great for beauty brands.</span></div>
+          <div class="result-row"><span class="result-label">Craft</span><span style="font-family:var(--mono);font-size:11px">Artisan/handmade product aesthetic.</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">Shopify Partners Program</span></div><ul class="step-list">
+          <li><div class="step-num">1</div><div class="step-body">Sign up free at partners.shopify.com</div></li>
+          <li><div class="step-num">2</div><div class="step-body">Build unlimited dev stores for free (no client charge)</div></li>
+          <li><div class="step-num">3</div><div class="step-body">Transfer to client → earn 20% recurring revenue share</div></li>
+          <li><div class="step-num">4</div><div class="step-body">Access Partner Academy — free Shopify training</div></li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+  <div id="pl-ss" style="display:none">
+    <div class="g2">
+      <div>
+        <div class="ac-card"><div class="ac-label">Squarespace</div><div class="ac-val">Best for: Photographers, creatives, simple service businesses</div><div class="ac-sub">Beautiful templates out of the box. Built-in e-commerce, booking, email marketing. Great for non-tech clients.</div></div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">Squarespace tips</span></div><ul class="step-list">
+          <li><div class="step-num">1</div><div class="step-body">Use Fluid Engine editor — drag anywhere, not just columns.</div></li>
+          <li><div class="step-num">2</div><div class="step-body">Add custom CSS via Design → Custom CSS for advanced styling.</div></li>
+          <li><div class="step-num">3</div><div class="step-body">Join Squarespace Circle (partner program) for 20% client discounts.</div></li>
+        </ul></div>
+      </div>
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Squarespace vs Webflow</span></div>
+        <table class="tbl"><thead><tr><th></th><th>Squarespace</th><th>Webflow</th></tr></thead><tbody>
+          <tr><td>Learning curve</td><td class="tbl-green">Easy</td><td class="tbl-amber">Medium</td></tr>
+          <tr><td>Design control</td><td class="tbl-muted">Limited</td><td class="tbl-green">Full</td></tr>
+          <tr><td>Client editing</td><td class="tbl-green">Very easy</td><td class="tbl-amber">Moderate</td></tr>
+          <tr><td>Best for</td><td class="tbl-muted">Creatives</td><td class="tbl-muted">Startups, agencies</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+  <div id="pl-fr" style="display:none">
+    <div class="g2">
+      <div>
+        <div class="ac-card"><div class="ac-label">Framer</div><div class="ac-val">Best for: Startup landing pages, modern design-heavy sites</div><div class="ac-sub">Designer tool with built-in motion. Framer AI generates starter sites from text in 30 seconds.</div></div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">Framer AI workflow</span></div><ul class="step-list">
+          <li><div class="step-num">1</div><div class="step-body">New Project → Generate with AI</div></li>
+          <li><div class="step-num">2</div><div class="step-body">"Landing page for a Brooklyn barbershop, dark masculine theme"</div></li>
+          <li><div class="step-num">3</div><div class="step-body">Full site in 30 seconds. Edit text, images, colors.</div></li>
+          <li><div class="step-num">4</div><div class="step-body">Add CMS for blog/portfolio if needed. Publish to custom domain.</div></li>
+        </ul></div>
+      </div>
+      <div class="panel"><div class="panel-hdr"><span class="panel-label">Framer strengths</span></div>
+        <div class="result-row"><span class="result-label">Framer AI</span><span style="font-family:var(--mono);font-size:11px">Full site from text in 60 seconds</span></div>
+        <div class="result-row"><span class="result-label">Motion built-in</span><span style="font-family:var(--mono);font-size:11px">Scroll animations, hover effects, transitions</span></div>
+        <div class="result-row"><span class="result-label">CMS collections</span><span style="font-family:var(--mono);font-size:11px">Dynamic pages for blog, portfolio, team</span></div>
+        <div class="result-row"><span class="result-label">Free tier</span><span style="font-family:var(--mono);font-size:11px">.framer.website subdomain, unlimited pages</span></div>
+      </div>
+    </div>
+  </div>
+  <div id="pl-ht" style="display:none">
+    <div class="g2">
+      <div>
+        <div class="ac-card"><div class="ac-label">Pure HTML/CSS/JS</div><div class="ac-val">Full control, fastest performance, cheapest hosting</div><div class="ac-sub">Nothing loads faster than plain HTML. No builder overhead. Perfect for static landing pages.</div></div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">CSS cheat sheet</span></div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--text);line-height:2.2">
+            <strong style="color:var(--accent)">Flexbox center:</strong> display:flex; justify-content:center; align-items:center;<br>
+            <strong style="color:var(--accent)">Grid 2-col:</strong> display:grid; grid-template-columns:1fr 1fr; gap:1rem;<br>
+            <strong style="color:var(--accent)">Responsive:</strong> @media(max-width:768px){ ... }<br>
+            <strong style="color:var(--accent)">CSS vars:</strong> :root{ --color:#b85c2a; } then var(--color)<br>
+            <strong style="color:var(--accent)">Smooth scroll:</strong> html{ scroll-behavior:smooth; }<br>
+            <strong style="color:var(--accent)">Absolute center:</strong> position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">Deploy to Netlify in 60 seconds</span></div><ul class="step-list">
+          <li><div class="step-num">1</div><div class="step-body">Go to netlify.com/drop</div></li>
+          <li><div class="step-num">2</div><div class="step-body">Drag your project folder onto the page</div></li>
+          <li><div class="step-num">3</div><div class="step-body">Get a live URL instantly — free forever</div></li>
+        </ul></div>
+        <div class="panel"><div class="panel-hdr"><span class="panel-label">HTML boilerplate essentials</span></div>
+          <div class="script-box" style="font-size:11px">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta name="description" content="SEO description"&gt;
+  &lt;title&gt;Page Title | Business&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+  &lt;link rel="icon" href="favicon.ico"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- content --&gt;
+  &lt;script src="script.js" defer&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- BUILD PROCESS -->
+<div class="page" id="page-process"><div class="wrap">
+  <div class="page-hdr"><h2>Build <em>Process</em></h2><p>Start to finish — from inquiry to launch</p></div>
+  <div class="g2 mb24">
+    <div>
+      <div class="sec-hdr"><span class="sec-title">Phase 1 — Discovery</span></div>
+      <div class="panel"><ul class="step-list">
+        <li><div class="step-num">1</div><div class="step-body"><strong>Client intake form</strong> — Send before the call. Get: goal, budget, examples they like, content they have.</div></li>
+        <li><div class="step-num">2</div><div class="step-body"><strong>Discovery call</strong> — Listen 80%, talk 20%. Find the real pain. Sell the solution to THAT pain.</div></li>
+        <li><div class="step-num">3</div><div class="step-body"><strong>Sitemap first.</strong> List every page needed. Get client to approve before building — prevents scope creep.</div></li>
+        <li><div class="step-num">4</div><div class="step-body"><strong>Content first.</strong> Use Claude to write all copy before touching design. Words before visuals.</div></li>
+      </ul></div>
+      <div class="sec-hdr"><span class="sec-title">Phase 2 — Build</span></div>
+      <div class="panel"><ul class="step-list">
+        <li><div class="step-num">5</div><div class="step-body"><strong>Build in sections.</strong> Header → Hero → About → Services → Social proof → CTA → Footer. One at a time.</div></li>
+        <li><div class="step-num">6</div><div class="step-body"><strong>Mobile first.</strong> Design for 375px wide, scale up. 60%+ of visitors are on phones.</div></li>
+        <li><div class="step-num">7</div><div class="step-body"><strong>Internal review.</strong> Run Lighthouse. Check all links. Test every form. View on real phone.</div></li>
+      </ul></div>
+    </div>
+    <div>
+      <div class="sec-hdr"><span class="sec-title">Phase 3 — Review</span></div>
+      <div class="panel"><ul class="step-list">
+        <li><div class="step-num">8</div><div class="step-body"><strong>Loom walkthrough.</strong> Record 3–5 min video walking through every section. Reduces revision confusion.</div></li>
+        <li><div class="step-num">9</div><div class="step-body"><strong>One feedback channel.</strong> Ask for all notes in a single email or doc — not scattered WhatsApp.</div></li>
+        <li><div class="step-num">10</div><div class="step-body"><strong>Enforce revision limits.</strong> 2 rounds in contract. Round 3 = extra charge.</div></li>
+      </ul></div>
+      <div class="sec-hdr"><span class="sec-title">Phase 4 — Launch</span></div>
+      <div class="panel"><ul class="step-list">
+        <li><div class="step-num">11</div><div class="step-body"><strong>Collect final payment</strong> before going live. No exceptions. "Site goes live when payment clears."</div></li>
+        <li><div class="step-num">12</div><div class="step-body"><strong>Set up GA4 + Search Console.</strong> Send client a Loom showing where to log in.</div></li>
+        <li><div class="step-num">13</div><div class="step-body"><strong>Handoff Loom.</strong> Record "how to update your site" video. Makes you look pro.</div></li>
+      </ul></div>
+    </div>
+  </div>
+  <div class="sec-hdr"><span class="sec-title">Pre-Launch Checklist</span><span class="sec-sub">Run before every site goes live</span></div>
+  <div class="g3">
+    <div class="panel"><div class="panel-hdr"><span class="panel-label">Technical</span></div><ul class="check-list">
+      <li class="check-item"><input type="checkbox"><label>Mobile responsive — tested on real phone</label></li>
+      <li class="check-item"><input type="checkbox"><label>All links work (no 404s)</label></li>
+      <li class="check-item"><input type="checkbox"><label>Contact form submits and sends email</label></li>
+      <li class="check-item"><input type="checkbox"><label>Images compressed (all under 200kb)</label></li>
+      <li class="check-item"><input type="checkbox"><label>SSL active (https://)</label></li>
+      <li class="check-item"><input type="checkbox"><label>PageSpeed score 80+ on mobile</label></li>
+      <li class="check-item"><input type="checkbox"><label>Favicon set</label></li>
+      <li class="check-item"><input type="checkbox"><label>404 page exists</label></li>
+    </ul></div>
+    <div class="panel"><div class="panel-hdr"><span class="panel-label">SEO</span></div><ul class="check-list">
+      <li class="check-item"><input type="checkbox"><label>Title tag on every page (under 60 chars)</label></li>
+      <li class="check-item"><input type="checkbox"><label>Meta description on every page</label></li>
+      <li class="check-item"><input type="checkbox"><label>One H1 per page</label></li>
+      <li class="check-item"><input type="checkbox"><label>All images have alt text</label></li>
+      <li class="check-item"><input type="checkbox"><label>XML sitemap submitted</label></li>
+      <li class="check-item"><input type="checkbox"><label>Google Search Console verified</label></li>
+      <li class="check-item"><input type="checkbox"><label>GA4 installed</label></li>
+    </ul></div>
+    <div class="panel"><div class="panel-hdr"><span class="panel-label">Content & Legal</span></div><ul class="check-list">
+      <li class="check-item"><input type="checkbox"><label>All placeholder text removed</label></li>
+      <li class="check-item"><input type="checkbox"><label>Phone, email, address correct</label></li>
+      <li class="check-item"><input type="checkbox"><label>Privacy Policy page exists</label></li>
+      <li class="check-item"><input type="checkbox"><label>Copyright year in footer correct</label></li>
+      <li class="check-item"><input type="checkbox"><label>Social media links working</label></li>
+      <li class="check-item"><input type="checkbox"><label>Logo sharp on retina screens</label></li>
+    </ul></div>
+  </div>
+</div></div>
+<!-- SEO -->
+<div class="page" id="page-seo"><div class="wrap">
+  <div class="page-hdr"><h2>SEO <em>Fundamentals</em></h2><p>What to know, what to promise clients, and how to deliver</p></div>
+  <div class="info-bar amber"><strong>Never promise "Page 1 of Google."</strong> Promise "proper SEO setup so Google can find and rank you." That's honest and still valuable.</div>
+  <div class="g2 mb24">
+    <div>
+      <div class="sec-hdr"><span class="sec-title">On-Page SEO</span><span class="sec-sub">Do this on every site</span></div>
+      <div class="panel">
+        <div class="result-row"><span class="result-label">Title Tag</span><span style="font-family:var(--mono);font-size:11px">Keyword + brand. Under 60 chars. Unique per page.</span></div>
+        <div class="result-row"><span class="result-label">Meta Description</span><span style="font-family:var(--mono);font-size:11px">1–2 sentences. Under 160 chars. Compelling.</span></div>
+        <div class="result-row"><span class="result-label">H1 Tag</span><span style="font-family:var(--mono);font-size:11px">One per page. Contains main keyword naturally.</span></div>
+        <div class="result-row"><span class="result-label">Image Alt Text</span><span style="font-family:var(--mono);font-size:11px">"Barber cutting hair in Brooklyn salon" — descriptive.</span></div>
+        <div class="result-row"><span class="result-label">Internal Links</span><span style="font-family:var(--mono);font-size:11px">Link between pages. Helps Google crawl the site.</span></div>
+        <div class="result-row"><span class="result-label">URL Structure</span><span style="font-family:var(--mono);font-size:11px">/services/haircuts not /page?id=43</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="sec-hdr"><span class="sec-title">Local SEO</span><span class="sec-sub">Critical for local business clients</span></div>
+      <div class="panel"><ul class="step-list">
+        <li><div class="step-num">1</div><div class="step-body"><strong>Google Business Profile.</strong> Most impactful single thing for local visibility. Set up + optimize for every client.</div></li>
+        <li><div class="step-num">2</div><div class="step-body"><strong>NAP Consistency.</strong> Name, Address, Phone identical everywhere — website, GBP, Yelp, Facebook.</div></li>
+        <li><div class="step-num">3</div><div class="step-body"><strong>Local citations.</strong> List on Yelp, Yellow Pages, Apple Maps, Bing Places. Signals local authority.</div></li>
+        <li><div class="step-num">4</div><div class="step-body"><strong>LocalBusiness schema.</strong> JSON-LD markup with address, phone, hours. Helps Google understand the business.</div></li>
+      </ul></div>
+    </div>
+  </div>
+  <div class="sec-hdr"><span class="sec-title">Free SEO Tools</span></div>
+  <table class="tbl mb24"><thead><tr><th>Tool</th><th>What It Does</th><th>Cost</th></tr></thead><tbody>
+    <tr><td><strong>Google Search Console</strong></td><td>Monitor rankings, indexing, errors. See what keywords bring traffic.</td><td class="tbl-green">Free</td></tr>
+    <tr><td><strong>Ahrefs Webmaster Tools</strong></td><td>Backlink analysis, site audit, keyword rankings for your domain.</td><td class="tbl-green">Free</td></tr>
+    <tr><td><strong>Screaming Frog</strong></td><td>Full site crawl — broken links, missing meta tags, duplicate content.</td><td class="tbl-green">Free up to 500 URLs</td></tr>
+    <tr><td><strong>PageSpeed Insights</strong></td><td>Core Web Vitals — speed, LCP, CLS, INP. Required for ranking.</td><td class="tbl-green">Free</td></tr>
+    <tr><td><strong>Ubersuggest</strong></td><td>Keyword ideas, competitor analysis, site audit.</td><td class="tbl-green">Free tier</td></tr>
+  </tbody></table>
+  <div class="sec-hdr"><span class="sec-title">Core Web Vitals</span><span class="sec-sub">What Google measures for ranking</span></div>
+  <div class="g3">
+    <div class="ac-card"><div class="ac-label">LCP — Largest Contentful Paint</div><div class="ac-val">Under 2.5s</div><div class="ac-sub">How fast does main content load? Fix: compress images, fast hosting, Cloudflare CDN.</div></div>
+    <div class="ac-card"><div class="ac-label">CLS — Cumulative Layout Shift</div><div class="ac-val">Under 0.1</div><div class="ac-sub">Does the page jump while loading? Fix: set image dimensions, avoid late-loading ads.</div></div>
+    <div class="ac-card"><div class="ac-label">INP — Interaction to Next Paint</div><div class="ac-val">Under 200ms</div><div class="ac-sub">How fast does page respond to clicks? Fix: reduce JS, avoid heavy scripts.</div></div>
+  </div>
+</div></div>
+
+<!-- LEGAL -->
+<div class="page" id="page-legal"><div class="wrap">
+  <div class="page-hdr"><h2>Legal & Business <em>Foundations</em></h2><p>Protect yourself and get paid — every time</p></div>
+  <div class="g2 mb24">
+    <div>
+      <div class="sec-hdr"><span class="sec-title">Business Structure</span></div>
+      <div class="panel">
+        <div class="result-row"><span class="result-label">Sole Proprietor</span><span style="font-family:var(--mono);font-size:11px">Start here. No paperwork. You = the business.</span></div>
+        <div class="result-row"><span class="result-label">LLC</span><span style="font-family:var(--mono);font-size:11px">Form when earning $30k+/yr. Protects personal assets.</span></div>
+        <div class="result-row"><span class="result-label">S-Corp</span><span style="font-family:var(--mono);font-size:11px">Consider at $80k+/yr. Tax savings on self-employment.</span></div>
+        <div class="result-row"><span class="result-label">Separate bank account</span><span style="font-family:var(--mono);font-size:11px">Day 1 requirement. Never mix personal + business money.</span></div>
+      </div>
+      <div class="sec-hdr"><span class="sec-title">Payment Tools</span></div>
+      <div class="panel">
+        <div class="result-row"><span class="result-label">Wave</span><div><span class="tool-tag free">Free</span><span style="font-family:var(--mono);font-size:11px"> Invoicing + accounting. Best free option.</span></div></div>
+        <div class="result-row"><span class="result-label">Stripe</span><div><span class="tool-tag paid">2.9% fee</span><span style="font-family:var(--mono);font-size:11px"> Professional payment pages.</span></div></div>
+        <div class="result-row"><span class="result-label">Wise</span><div><span class="tool-tag free">Low fee</span><span style="font-family:var(--mono);font-size:11px"> Best for international clients.</span></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="sec-hdr"><span class="sec-title">Your Contract Must Include</span></div>
+      <div class="panel"><ul class="step-list">
+        <li><div class="step-num">✓</div><div class="step-body"><strong>Scope of work</strong> — Exact list: "5-page website including homepage, about, services, portfolio, contact." Not just "website."</div></li>
+        <li><div class="step-num">✓</div><div class="step-body"><strong>Payment terms</strong> — 50% upfront, 50% before launch. Exact amounts and due dates.</div></li>
+        <li><div class="step-num">✓</div><div class="step-body"><strong>Revision limits</strong> — "2 rounds included. Additional rounds at $[X]/hr."</div></li>
+        <li><div class="step-num">✓</div><div class="step-body"><strong>Kill fee</strong> — "If client cancels after work begins, deposit is non-refundable."</div></li>
+        <li><div class="step-num">✓</div><div class="step-body"><strong>IP ownership</strong> — "Client owns all final deliverables upon full payment."</div></li>
+        <li><div class="step-num">✓</div><div class="step-body"><strong>Content responsibility</strong> — "Client provides all content within 5 business days of signing."</div></li>
+      </ul></div>
+    </div>
+  </div>
+  <div class="sec-hdr"><span class="sec-title">Tax Basics</span></div>
+  <div class="g3 mb24">
+    <div class="panel" style="border-left:4px solid var(--green)"><div class="panel-label" style="margin-bottom:6px">Set aside monthly</div><div style="font-family:var(--mono);font-size:22px;font-weight:500;color:var(--green);margin-bottom:6px">25–30%</div><div style="font-family:var(--mono);font-size:11px;color:var(--muted)">Separate savings account. Every payment. Covers self-employment tax + income tax.</div></div>
+    <div class="panel" style="border-left:4px solid var(--blue)"><div class="panel-label" style="margin-bottom:6px">Write-offs to track</div><div style="font-family:var(--mono);font-size:11px;color:var(--text);line-height:2">Software subscriptions<br>Hardware (laptop, monitor)<br>Home office (% of rent)<br>Internet bill<br>Courses and books<br>Business meals (50%)</div></div>
+    <div class="panel" style="border-left:4px solid var(--amber)"><div class="panel-label" style="margin-bottom:6px">Quarterly taxes (US)</div><div style="font-family:var(--mono);font-size:11px;color:var(--text);line-height:2">Pay estimated taxes 4x/year once you earn $400+/yr freelancing.<br><br>IRS Form 1040-ES.<br>Wave calculates the estimate.</div></div>
+  </div>
+</div></div>
+
+<!-- SECRETS -->
+<div class="page" id="page-secrets"><div class="wrap">
+  <div class="page-hdr"><h2>Pro Tips & <em>Secrets</em></h2><p>The hidden tricks most freelancers never discover</p></div>
+  <div class="info-bar accent">These are the things nobody writes in blog posts. Each one has made or saved real freelancers thousands of dollars.</div>
+  <div id="secretsList"></div>
+</div></div>
+
+<!-- CHECKLIST -->
+<div class="page" id="page-checklist"><div class="wrap">
+  <div class="page-hdr"><h2>Master <em>Checklist</em></h2><p>Your operating guide from day one</p></div>
+  <div class="g2">
+    <div>
+      <div class="sec-hdr"><span class="sec-title">Week 1 — Foundation</span></div>
+      <div class="panel"><ul class="check-list">
+        <li class="check-item"><input type="checkbox"><label>Choose 1 niche to focus on first</label></li>
+        <li class="check-item"><input type="checkbox"><label>Set up Claude + Cursor accounts</label></li>
+        <li class="check-item"><input type="checkbox"><label>Pick one platform to master (Webflow or WP)</label></li>
+        <li class="check-item"><input type="checkbox"><label>Build 1 spec site for your target niche</label></li>
+        <li class="check-item"><input type="checkbox"><label>Register a domain for your own business</label></li>
+        <li class="check-item"><input type="checkbox"><label>Deploy your portfolio site live</label></li>
+        <li class="check-item"><input type="checkbox"><label>Set up Wave for invoicing</label></li>
+        <li class="check-item"><input type="checkbox"><label>Set up Calendly for discovery calls</label></li>
+        <li class="check-item"><input type="checkbox"><label>Write your contract using a free template</label></li>
+      </ul></div>
+      <div class="sec-hdr"><span class="sec-title">Week 2 — First Outreach</span></div>
+      <div class="panel"><ul class="check-list">
+        <li class="check-item"><input type="checkbox"><label>Find 50 businesses on Google Maps with no website</label></li>
+        <li class="check-item"><input type="checkbox"><label>Send 20 cold emails using scripts from this guide</label></li>
+        <li class="check-item"><input type="checkbox"><label>Make 20 cold calls</label></li>
+        <li class="check-item"><input type="checkbox"><label>Set up HubSpot or Streak CRM to track leads</label></li>
+        <li class="check-item"><input type="checkbox"><label>Post first piece of social media content</label></li>
+        <li class="check-item"><input type="checkbox"><label>Set up Google Business Profile</label></li>
+        <li class="check-item"><input type="checkbox"><label>Follow up on all outreach from day 1</label></li>
+      </ul></div>
+    </div>
+    <div>
+      <div class="sec-hdr"><span class="sec-title">First Client — Full Process</span></div>
+      <div class="panel"><ul class="check-list">
+        <li class="check-item"><input type="checkbox"><label>Send intake form before discovery call</label></li>
+        <li class="check-item"><input type="checkbox"><label>Run discovery call — listen more than talk</label></li>
+        <li class="check-item"><input type="checkbox"><label>Send proposal within 2 hours of call</label></li>
+        <li class="check-item"><input type="checkbox"><label>Send contract same day as verbal yes</label></li>
+        <li class="check-item"><input type="checkbox"><label>Collect 50% deposit before any work starts</label></li>
+        <li class="check-item"><input type="checkbox"><label>Build demo — show before building final</label></li>
+        <li class="check-item"><input type="checkbox"><label>Record Loom walkthrough for client review</label></li>
+        <li class="check-item"><input type="checkbox"><label>Run full pre-launch checklist</label></li>
+        <li class="check-item"><input type="checkbox"><label>Collect final payment before going live</label></li>
+        <li class="check-item"><input type="checkbox"><label>Record handoff tutorial Loom for client</label></li>
+        <li class="check-item"><input type="checkbox"><label>Ask for Google review + referrals</label></li>
+        <li class="check-item"><input type="checkbox"><label>Pitch maintenance retainer</label></li>
+      </ul></div>
+      <div class="sec-hdr"><span class="sec-title">Month 3+ — Growth</span></div>
+      <div class="panel"><ul class="check-list">
+        <li class="check-item"><input type="checkbox"><label>Raise rates 20% after 5 completed projects</label></li>
+        <li class="check-item"><input type="checkbox"><label>Create 3 fixed-price service packages</label></li>
+        <li class="check-item"><input type="checkbox"><label>Build 5+ retainer clients for recurring income</label></li>
+        <li class="check-item"><input type="checkbox"><label>Set up reseller hosting for passive income</label></li>
+        <li class="check-item"><input type="checkbox"><label>Post consistent content (2–3x/week)</label></li>
+        <li class="check-item"><input type="checkbox"><label>Build referral partnerships with other freelancers</label></li>
+      </ul></div>
+    </div>
+  </div>
+</div></div>
+
+<!-- CALCULATOR -->
+<div class="page" id="page-calc"><div class="wrap">
+  <div class="page-hdr"><h2>Project <em>Calculator</em></h2><p>Price any project live — see take-home, tax, and projects to goal</p></div>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start">
+    <div>
+      <div class="panel">
+        <div class="panel-hdr"><span class="panel-label">Base package</span></div>
+        <select class="fi" id="c-pkg" onchange="updateCalc()">
+          <option value="400">Landing page — from $400</option>
+          <option value="900" selected>Small biz site (3–5 pages) — from $900</option>
+          <option value="1200">Full business site (5+ pages) — from $1,200</option>
+          <option value="1800">E-commerce (Shopify) — from $1,800</option>
+          <option value="2500">Custom web app — from $2,500</option>
+          <option value="600">Portfolio site — from $600</option>
+          <option value="1000">Restaurant / booking site — from $1,000</option>
+        </select>
+      </div>
+      <div class="panel">
+        <div class="panel-hdr"><span class="panel-label">Multipliers</span></div>
+        <div class="g2">
+          <div class="field"><label>Experience</label><select class="fi" id="c-exp" onchange="updateCalc()"><option value="0.85">Beginner ×0.85</option><option value="1" selected>Standard ×1.0</option><option value="1.15">Experienced ×1.15</option><option value="1.3">Expert ×1.3</option></select></div>
+          <div class="field"><label>Client type</label><select class="fi" id="c-cli" onchange="updateCalc()"><option value="0.85">Tight budget ×0.85</option><option value="1" selected>Standard ×1.0</option><option value="1.2">Premium ×1.2</option><option value="1.4">High-end ×1.4</option></select></div>
+        </div>
+        <div class="field"><label>Rush fee</label><select class="fi" id="c-rush" onchange="updateCalc()"><option value="1" selected>Standard (no rush)</option><option value="1.3">Rush — this week (+30%)</option><option value="1.5">Same-day (+50%)</option></select></div>
+      </div>
+      <div class="panel">
+        <div class="panel-hdr"><span class="panel-label">Add-ons</span></div>
+        <ul class="check-list" id="calc-addons">
+          <li class="check-item"><input type="checkbox" value="75" onchange="updateCalc()"><label>Online Booking embed — +$75</label></li>
+          <li class="check-item"><input type="checkbox" value="100" onchange="updateCalc()"><label>E-commerce store — +$100</label></li>
+          <li class="check-item"><input type="checkbox" value="150" onchange="updateCalc()"><label>SEO setup — +$150</label></li>
+          <li class="check-item"><input type="checkbox" value="200" onchange="updateCalc()"><label>Logo design — +$200</label></li>
+          <li class="check-item"><input type="checkbox" value="80" onchange="updateCalc()"><label>Blog section — +$80</label></li>
+          <li class="check-item"><input type="checkbox" value="50" onchange="updateCalc()"><label>Google Maps + hours — +$50</label></li>
+          <li class="check-item"><input type="checkbox" value="120" onchange="updateCalc()"><label>Live chat setup — +$120</label></li>
+          <li class="check-item"><input type="checkbox" value="50" onchange="updateCalc()"><label>Photo gallery — +$50</label></li>
+          <li class="check-item"><input type="checkbox" value="300" onchange="updateCalc()"><label>Speed optimization audit — +$300</label></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <div class="panel-hdr"><span class="panel-label">Settings</span></div>
+        <div class="g2">
+          <div class="field"><label>Monthly goal ($)</label><div class="inline-money"><span>$</span><input id="c-goal" type="number" value="3000" oninput="updateCalc()"></div></div>
+          <div class="field"><label>Tax buffer</label><select class="fi" id="c-tax" onchange="updateCalc()"><option value="20">20%</option><option value="25" selected>25%</option><option value="30">30%</option></select></div>
+        </div>
+      </div>
+    </div>
+    <div style="position:sticky;top:72px;display:flex;flex-direction:column;gap:12px">
+      <div class="big-price"><div class="bp-label">Quote to client</div><div class="bp-val" id="c-total">$900</div><div class="bp-sub" id="c-breakdown">Base + add-ons</div></div>
+      <div class="g2">
+        <div class="stat-card"><div class="stat-k">Take home</div><div class="stat-v" style="color:var(--green)" id="c-home">$675</div></div>
+        <div class="stat-card"><div class="stat-k">Tax set aside</div><div class="stat-v" style="color:var(--red)" id="c-taxamt">$225</div></div>
+      </div>
+      <div class="stat-card"><div class="stat-k">Upfront deposit (50%)</div><div class="stat-v" id="c-dep">$450</div><div class="stat-s">Collect before starting</div></div>
+      <div class="stat-card"><div class="stat-k">Projects to hit goal</div><div class="stat-v" id="c-goal2">4</div><div class="stat-s" id="c-goal2-sub">per month at this price</div></div>
+      <button class="nav-btn primary" onclick="copyCalc(this)" style="width:100%;padding:10px">Copy Quote</button>
+    </div>
+  </div>
+</div></div>
+
+<footer>Freelance Web Bible — Complete reference for building a profitable web design business. Navigate with the tabs above.</footer>
+<script>
+// THEME
+function toggleTheme(){const h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');}
+
+// NAVIGATION
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  const pg=document.getElementById('page-'+id);if(pg)pg.classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(t=>{if((t.getAttribute('onclick')||'').includes("'"+id+"'"))t.classList.add('active');});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// FLOATING NAV
+window.addEventListener('scroll',()=>{
+  const nt=document.getElementById('navTabs');
+  if(window.scrollY>80)nt.classList.add('floating');else nt.classList.remove('floating');
+});
+
+// INNER TABS
+function swInner(prefix,id,btn){
+  const page=btn.closest('.page')||document.body;
+  page.querySelectorAll('[id^="'+prefix+'-"]').forEach(el=>el.style.display='none');
+  const t=document.getElementById(prefix+'-'+id);if(t)t.style.display='';
+  btn.closest('.inner-tabs').querySelectorAll('.inner-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// COPY SCRIPT
+function copyEl(btn,id){
+  const el=document.getElementById(id);if(!el)return;
+  navigator.clipboard.writeText(el.textContent).then(()=>{
+    btn.textContent='Copied!';btn.classList.add('ok');
+    setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('ok');},2000);
+  });
+}
+
+// ACCORDION
+function toggleAcc(hdr){
+  const b=hdr.nextElementSibling,a=hdr.querySelector('.accordion-arrow'),o=b.classList.contains('open');
+  b.classList.toggle('open',!o);a.style.transform=o?'':'rotate(180deg)';
+}
+
+// NICHES DATA
+const niches=[
+  {icon:'🔧',name:'HVAC / Contractors',range:'$800–$2,500',tags:['Lead gen','Google Maps','Emergency CTA'],
+   pitch:'They get business from Google. Show competitors are ranking and they\'re not.',
+   needs:'Homepage, services, areas served, emergency phone CTA, contact form, Maps, trust badges (licenses, insurance)',
+   avoid:'Complex animations. They need fast, lead-generating sites.',
+   budget:'$800–$2,500 setup + $100–$200/mo maintenance',
+   find:'Google Maps "[niche] near [city]" — filter by no website. Check Yelp.',
+   tools:'WordPress + Elementor or Webflow. Formspree for forms.'},
+  {icon:'✂️',name:'Hair Salons',range:'$600–$1,800',tags:['Booking','Gallery','Instagram-to-web'],
+   pitch:'They\'re on Instagram — but where do people book? A site converts followers to bookings.',
+   needs:'Services + pricing, stylist profiles, gallery (before/afters), booking widget, contact + hours',
+   avoid:'Overcomplicating it. They want bookings, not a flashy site.',
+   budget:'$600–$1,800 setup + $75–$150/mo',
+   find:'Instagram location search. Look for salons with no website link in bio.',
+   tools:'Squarespace or Webflow. Acuity or Calendly for booking.'},
+  {icon:'💈',name:'Barber Shops',range:'$500–$1,500',tags:['Masculine aesthetic','Booking','Gallery'],
+   pitch:'Most barbers rely on Instagram only. A website lets Google send clients 24/7.',
+   needs:'Homepage, services + prices, gallery, booking, location + hours, about',
+   avoid:'Overly feminine design. Bold, dark, masculine.',
+   budget:'$500–$1,500 setup + $50–$100/mo',
+   find:'Google Maps. Walk in and show the demo in person.',
+   tools:'Framer AI or Webflow. Dark themes work best.'},
+  {icon:'💅',name:'Nail Salons',range:'$600–$1,600',tags:['Gallery heavy','Booking','Services menu'],
+   pitch:'Show how many people search "nail salon near me" monthly. They\'re missing all of it.',
+   needs:'Services + pricing, gallery (nail art photos crucial), booking widget, location + hours',
+   avoid:'Too much text. Images are everything.',
+   budget:'$600–$1,600 setup + $75/mo',
+   find:'Google Maps, Yelp, Instagram geotag search.',
+   tools:'Squarespace (gallery-friendly) or WordPress with Elementor.'},
+  {icon:'🧹',name:'Cleaning Services',range:'$500–$1,200',tags:['Lead gen','Quote form','Local SEO'],
+   pitch:'People search "house cleaning [city]" thousands of times monthly — and they\'re invisible.',
+   needs:'Services (residential/commercial), service area, quote request form, trust signals (insured, bonded)',
+   avoid:'Over-designed. Cleaning clients want clean, simple, trustworthy.',
+   budget:'$500–$1,200 setup',
+   find:'Google Maps, Yelp, Nextdoor, Craigslist.',
+   tools:'WordPress or Webflow. Web3Forms for quote forms.'},
+  {icon:'⚖️',name:'Lawyers',range:'$1,500–$4,000',tags:['Trust signals','Consultation booking','Credibility'],
+   pitch:'A bad-looking site costs them high-value clients. In legal, perception is everything.',
+   needs:'Practice areas, attorney bios, consultation booking, case results/testimonials, bar badges',
+   avoid:'Anything that looks cheap. They have high standards.',
+   budget:'$1,500–$4,000 setup + $200–$400/mo',
+   find:'Search "attorney [city]" — look for outdated sites. LinkedIn.',
+   tools:'WordPress with premium theme, or Webflow. Calendly for consultations.'},
+  {icon:'🧘',name:'Coaches & Therapists',range:'$800–$2,500',tags:['Warmth','Booking','Trust-building'],
+   pitch:'Clients find them by searching. Without a pro site, they\'re losing people who found them and left.',
+   needs:'About + story, approach, services, testimonials, booking, contact',
+   avoid:'Cold or corporate design. Warm, personal, trust-building.',
+   budget:'$800–$2,500 setup + $100–$200/mo',
+   find:'Psychology Today directory (therapists without websites), LinkedIn.',
+   tools:'Squarespace or WordPress. Acuity or SimplePractice for booking.'},
+  {icon:'🏠',name:'Real Estate Agents',range:'$1,000–$3,000',tags:['Listings','Lead capture','Stand out'],
+   pitch:'They need a site that captures buyer leads 24/7. Their brokerage site won\'t do it.',
+   needs:'About, listings (IDX or manual), buyer/seller resources, home valuation tool, contact',
+   avoid:'Generic templates — need to stand out from 1,000 other agents.',
+   budget:'$1,000–$3,000 setup + $100–$300/mo',
+   find:'LinkedIn, local Facebook groups, open houses.',
+   tools:'WordPress with Elementor + IDX plugin, or Webflow.'},
+  {icon:'🍕',name:'Restaurants',range:'$800–$2,500',tags:['Menu','Reservations','Hours + Maps'],
+   pitch:'People Google restaurants before going. Can\'t find the menu = they pick somewhere else.',
+   needs:'Menu (PDF or built-in), hours, location + map, online ordering link, reservation widget, gallery',
+   avoid:'Slow-loading images. Restaurant sites must be fast and mobile-perfect.',
+   budget:'$800–$2,500 setup + $100–$200/mo',
+   find:'Google Maps, Yelp. Walk in during off-hours.',
+   tools:'Squarespace (built-in menu), Webflow, or WordPress.'},
+  {icon:'💪',name:'Personal Trainers',range:'$600–$1,800',tags:['Booking','Results gallery','Packages'],
+   pitch:'Every client they get from Instagram could have found them on Google automatically.',
+   needs:'About + credentials, programs/packages, transformation gallery, booking, testimonials',
+   avoid:'Too much text. Show results — before/after photos are the biggest selling point.',
+   budget:'$600–$1,800 setup + $75–$150/mo',
+   find:'Instagram fitness hashtags, local gyms, Facebook fitness groups.',
+   tools:'Squarespace or WordPress. Acuity for session booking.'},
+  {icon:'🏡',name:'Landscapers',range:'$600–$1,500',tags:['Portfolio','Lead form','Service area'],
+   pitch:'Homeowners Google landscapers before calling anyone. Without a site, they don\'t exist online.',
+   needs:'Services, before/after gallery, service area, quote form, contact',
+   avoid:'Over-designed. Clean and clear with a strong quote CTA.',
+   budget:'$600–$1,500 setup',
+   find:'Google Maps, Nextdoor, local Facebook groups.',
+   tools:'WordPress or Webflow.'},
+  {icon:'🦷',name:'Dentists',range:'$1,200–$3,500',tags:['Appointment booking','Insurance','Local SEO'],
+   pitch:'Local SEO for dentists is extremely competitive — a properly built site with SEO is worth thousands.',
+   needs:'Services, team bios, appointment booking, insurance accepted, location + hours',
+   avoid:'Generic stock photos. Use real photos if possible.',
+   budget:'$1,200–$3,500 setup + $200–$400/mo',
+   find:'Google Maps "dentist near [city]", Zocdoc.',
+   tools:'WordPress with Elementor. Calendly or Zocdoc integration.'},
+  {icon:'💆',name:'Med Spas / Aesthetics',range:'$1,500–$4,000',tags:['Luxury look','Booking','Before/after gallery'],
+   pitch:'These clients have high budgets and high standards. A premium website directly impacts revenue.',
+   needs:'Services + pricing, before/after gallery, booking, practitioner credentials, product info',
+   avoid:'Anything budget-looking. Luxury aesthetic required.',
+   budget:'$1,500–$4,000 setup + $200–$400/mo',
+   find:'Yelp, Instagram, Google Maps.',
+   tools:'Webflow or Framer. Jane App for booking.'},
+  {icon:'📸',name:'Photographers',range:'$500–$2,000',tags:['Gallery focused','Booking','Packages'],
+   pitch:'Their portfolio IS their product. A poor presentation loses bookings every day.',
+   needs:'Gallery (full-screen, fast), packages + pricing, about, booking/inquiry form',
+   avoid:'Cluttered layouts. Photos need to breathe.',
+   budget:'$500–$2,000 setup',
+   find:'Facebook photography groups, Craigslist, Instagram.',
+   tools:'Squarespace (best galleries) or Webflow.'},
+  {icon:'🚗',name:'Auto Mechanics',range:'$600–$1,500',tags:['Services','Appointment','Trust'],
+   pitch:'People Google mechanics before driving to one. Reviews + a clean site = more appointments.',
+   needs:'Services + prices, location + hours, appointment booking, certifications, reviews',
+   avoid:'Complex site. Simple, clear, trustworthy.',
+   budget:'$600–$1,500 setup',
+   find:'Google Maps, Yelp, Nextdoor.',
+   tools:'WordPress or Webflow.'},
+  {icon:'⛪',name:'Churches / Nonprofits',range:'$500–$2,000',tags:['Donation button','Events','Mission'],
+   pitch:'They often have grant funding for digital presence. Ask about their tech budget.',
+   needs:'About/mission, events calendar, donation button, volunteer signup, contact',
+   avoid:'Charging full price without asking about grants first.',
+   budget:'$500–$2,000 (discounted, never free)',
+   find:'Local church directories, nonprofit listings, community boards.',
+   tools:'WordPress. GiveWP or PayPal for donations.'},
+  {icon:'🎓',name:'Tutors / Educators',range:'$400–$1,200',tags:['Booking','Subjects','Testimonials'],
+   pitch:'Parents Google tutors. A professional site with reviews converts better than a Craigslist ad.',
+   needs:'Subjects, approach, qualifications, booking, testimonials from parents',
+   avoid:'Overcomplicated. Warm and clear.',
+   budget:'$400–$1,200 setup',
+   find:'Craigslist, local parenting groups, school Facebook groups.',
+   tools:'WordPress or Squarespace. Calendly for booking.'},
+  {icon:'🍽️',name:'Caterers',range:'$700–$1,800',tags:['Menu gallery','Inquiry form','Events'],
+   pitch:'Wedding caterers need to look premium. A beautiful food gallery wins bookings.',
+   needs:'Menu options, gallery, event types, inquiry form, testimonials',
+   avoid:'Bad food photography. Source good stock if needed.',
+   budget:'$700–$1,800 setup',
+   find:'Wedding Facebook groups, The Knot, WeddingWire.',
+   tools:'Squarespace or Webflow.'},
+  {icon:'🎵',name:'Musicians / Bands',range:'$400–$1,200',tags:['EPK','Streaming embeds','Show dates'],
+   pitch:'They need a professional EPK (Electronic Press Kit) to get gigs and press coverage.',
+   needs:'Bio, press photos, music/streaming embeds, show dates, press kit download, booking contact',
+   avoid:'Autoplay audio. Professional and fast.',
+   budget:'$400–$1,200 setup',
+   find:'SoundCloud, Bandcamp, local venue listings.',
+   tools:'WordPress or Webflow. Bandsintown for show dates.'},
+  {icon:'🔑',name:'Property Managers',range:'$1,000–$3,000',tags:['Listings','Tenant portal','Lead capture'],
+   pitch:'They manage dozens of units — a professional site makes them look legitimate to landlords.',
+   needs:'Available units listing, tenant portal link, owner services, about, contact',
+   avoid:'Generic real estate templates.',
+   budget:'$1,000–$3,000 setup + $150–$300/mo',
+   find:'LinkedIn, local real estate investment groups.',
+   tools:'WordPress with custom post types, or Webflow CMS.'},
+];
+
+function renderNiches(){
+  const g=document.getElementById('nicheGrid');if(!g)return;
+  g.innerHTML=niches.map((n,i)=>`<div class="niche-card" onclick="openNiche(${i})">
+    <div class="niche-icon">${n.icon}</div>
+    <div class="niche-name">${n.name}</div>
+    <div class="niche-range">${n.range}</div>
+    <div>${n.tags.map(t=>`<span class="tool-tag">${t}</span>`).join('')}</div>
+  </div>`).join('');
+}
+
+function openNiche(i){
+  const n=niches[i];
+  document.getElementById('nicheModalBody').innerHTML=`
+    <button class="modal-close" onclick="document.getElementById('nicheModal').classList.remove('open')">✕ Close</button>
+    <div style="font-size:32px;margin-bottom:6px">${n.icon}</div>
+    <h2 style="font-family:var(--serif);font-size:26px;font-weight:400;margin-bottom:3px">${n.name}</h2>
+    <div style="font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:18px">${n.range}</div>
+    <div class="g2" style="margin-bottom:14px">
+      <div><div class="panel-label" style="margin-bottom:5px">Your pitch</div><div style="font-family:var(--mono);font-size:11px;line-height:1.8;color:var(--text);background:var(--accent-bg);border:1px solid rgba(184,92,42,.2);border-radius:var(--r);padding:11px">${n.pitch}</div></div>
+      <div><div class="panel-label" style="margin-bottom:5px">Where to find them</div><div style="font-family:var(--mono);font-size:11px;line-height:1.8;color:var(--muted)">${n.find}</div></div>
+    </div>
+    <div class="panel-label" style="margin-bottom:5px">What they need on their site</div>
+    <div style="font-family:var(--mono);font-size:11px;line-height:1.8;color:var(--text);margin-bottom:14px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:11px">${n.needs}</div>
+    <div class="g2" style="margin-bottom:14px">
+      <div><div class="panel-label" style="margin-bottom:4px">Budget</div><div style="font-family:var(--mono);font-size:11px;color:var(--accent)">${n.budget}</div></div>
+      <div><div class="panel-label" style="margin-bottom:4px">Best tools</div><div style="font-family:var(--mono);font-size:11px;color:var(--muted)">${n.tools}</div></div>
+    </div>
+    <div class="panel-label" style="margin-bottom:4px">What to avoid</div>
+    <div style="font-family:var(--mono);font-size:11px;color:var(--red);background:var(--red-bg);border:1px solid rgba(184,50,50,.15);border-radius:var(--r);padding:11px">${n.avoid}</div>`;
+  document.getElementById('nicheModal').classList.add('open');
+}
+function closeNicheModal(e){if(e.target===document.getElementById('nicheModal'))document.getElementById('nicheModal').classList.remove('open');}
+
+// ANATOMY
+const anatomy=[
+  {name:'Domain Name',icon:'🌐',col:'blue',what:'The web address (e.g., mybusiness.com). Your online identity.',why:'Everything connects to it. First thing a client needs.',how:'Register on Porkbun or Namecheap. Point DNS to host via Cloudflare.',cost:'$8–$15/yr'},
+  {name:'SSL Certificate',icon:'🔒',col:'green',what:'The "https://" — encrypts data between user and server.',why:'Google penalizes non-SSL. Browsers show "Not Secure" without it.',how:'Cloudflare gives free SSL. Netlify includes it. Most hosts include it.',cost:'Free with Cloudflare'},
+  {name:'Header & Navigation',icon:'🗂️',col:'accent',what:'Top bar — logo, nav links, CTA button.',why:'Visitors navigate by it. First impression of the site.',how:'Logo (SVG), max 5–6 links, sticky on scroll, hamburger on mobile.',cost:'Included in design'},
+  {name:'Hero Section',icon:'🎯',col:'accent',what:'First thing visitors see — headline, sub-headline, CTA, image.',why:'3 seconds to keep them. The hero decides if they stay or leave.',how:'H1 (what you do + who for), benefit sub-headline, one CTA, strong image.',cost:'Included'},
+  {name:'Services Section',icon:'⚙️',col:'accent',what:'What the business offers — 3–6 service cards.',why:'Tells visitors they\'re in the right place.',how:'Icon + name + 1-sentence description. Link to detailed pages.',cost:'Included'},
+  {name:'Social Proof',icon:'⭐',col:'amber',what:'Testimonials, star ratings, client logos, case studies.',why:'#1 conversion driver. People trust other people more than businesses.',how:'3–5 quotes with names + photos. Star ratings. Before/after if available.',cost:'Included'},
+  {name:'Call to Action',icon:'🚀',col:'accent',what:'Button/section telling visitors what to do. "Book a Free Call."',why:'Without a clear CTA, visitors leave. Every page needs at least one.',how:'Action verbs. Specific. Repeat CTA 3× on long pages (top, mid, bottom).',cost:'Included'},
+  {name:'Contact Form',icon:'📬',col:'green',what:'A form letting visitors message directly from the site.',why:'Lower friction than email — no app needed.',how:'Web3Forms or Formspree. Fields: Name, Email, Message.',cost:'Free with Web3Forms'},
+  {name:'Booking Widget',icon:'📅',col:'green',what:'Embedded calendar for direct appointment booking.',why:'Removes back-and-forth. Someone books at 2am without calling.',how:'Embed Calendly or Acuity. Connect to client\'s Google Calendar.',cost:'Free with Calendly'},
+  {name:'Footer',icon:'📋',col:'accent',what:'Bottom of site — links, contact info, legal, social, copyright.',why:'Highly interested visitors scroll to the bottom. Give them easy contact.',how:'Logo, quick links, contact info, social icons, privacy policy, copyright year.',cost:'Included'},
+  {name:'Privacy Policy',icon:'📄',col:'amber',what:'Legal page explaining how the site handles visitor data.',why:'Required by law (GDPR, CCPA). Google requires it for Analytics.',how:'Use Termly.io free generator. Add link in footer.',cost:'Free'},
+  {name:'Favicon',icon:'🔖',col:'blue',what:'Tiny icon in browser tabs.',why:'Professional detail. Makes the site look finished.',how:'Design 32×32px logo version. Convert at favicon.io.',cost:'Free'},
+  {name:'Analytics',icon:'📊',col:'green',what:'Tracking code that records visitors, traffic sources, behavior.',why:'Can\'t improve what you don\'t measure.',how:'Google Analytics 4 + Google Search Console. Paste in head tag.',cost:'Free'},
+  {name:'Schema Markup',icon:'🏷️',col:'blue',what:'JSON-LD code telling Google structured info about the business.',why:'Improves how site appears in search results. Rich snippets.',how:'LocalBusiness, FAQ, Review schema. Paste JSON-LD in head. Validate at schema.org.',cost:'Free'},
+  {name:'Open Graph Tags',icon:'📱',col:'blue',what:'Meta tags controlling how the site looks when shared on social.',why:'Without OG tags, shared links look ugly and get fewer clicks.',how:'Add og:title, og:description, og:image to head. Image: 1200×630px.',cost:'Free'},
+  {name:'404 Page',icon:'🚧',col:'amber',what:'Custom error page for URLs that don\'t exist.',why:'Custom 404 keeps visitors on site instead of leaving.',how:'Add helpful links and search bar. Keep brand consistent.',cost:'Included'},
+];
+
+function renderAnatomy(){
+  const c=document.getElementById('anatomyList');if(!c)return;
+  c.innerHTML=anatomy.map(item=>`<div class="accordion" style="border-left:3px solid var(--${item.col==='accent'?'accent':item.col==='green'?'green':item.col==='amber'?'amber':'blue'})">
+    <div class="accordion-hdr" onclick="toggleAcc(this)">
+      <span class="accordion-title">${item.icon} ${item.name}</span>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="g3" style="margin-top:12px">
+        <div><div class="panel-label" style="margin-bottom:4px">What it is</div><div style="font-family:var(--mono);font-size:11px;line-height:1.8">${item.what}</div></div>
+        <div><div class="panel-label" style="margin-bottom:4px">Why it matters</div><div style="font-family:var(--mono);font-size:11px;line-height:1.8;color:var(--muted)">${item.why}</div></div>
+        <div><div class="panel-label" style="margin-bottom:4px">How to build it</div><div style="font-family:var(--mono);font-size:11px;line-height:1.8">${item.how}</div><div style="margin-top:5px"><span class="tool-tag free">Cost: ${item.cost}</span></div></div>
+      </div>
+    </div>
+  </div>`).join('');
+}
+
+// SECRETS
+const secrets=[
+  {title:'The Screenshot Audit Cold Email',tag:'⚡ Highest Reply Rate',col:'green',body:'Find a business with a bad site. Take a screenshot. Open in Canva. Draw arrows and add text: "Mobile broken ❌" "No contact button ❌" "Slow load ❌". Send it: "I was doing research and noticed a few things costing you leads." Reply rates are 3–5× normal cold emails.'},
+  {title:'Google Maps Scraping for Leads',tag:'🗺️ Lead Generation',col:'blue',body:'Search "[niche] near [city]" on Google Maps. Businesses without a website link are hottest prospects. No website = no competition. 1 hour of this = 50–100 targeted prospects. Outscraper.com automates it at scale.'},
+  {title:'Inspect Element Learning (100% Legal)',tag:'🔍 Skill Hack',col:'blue',body:'Right-click any website → Inspect. See exactly how any site is built — HTML structure, CSS values, colors, fonts, spacing. The fastest way to learn web design. Completely legal. Study the best sites in the world for free.'},
+  {title:'Durable.co + Customize = Full Price',tag:'🚀 Speed Hack',col:'accent',body:'Go to Durable.co. Enter business name + industry. 30 seconds → full generated site. Use as starting point. Change colors, fonts, copy, images. Charge $500–$1,200. AI built the frame; you made it fit. Client pays for result, not hours.'},
+  {title:'The Retainer Trap (Legal Version)',tag:'💰 Revenue Multiplier',col:'amber',body:'Every project ends with a retainer pitch. Script: "I offer a monthly care plan — hosting, backups, security, and small updates for $[X]/mo. Most clients choose this so they never worry about tech." Target 10 retainer clients. At $150/mo each = $1,500/mo passive.'},
+  {title:'Resell Hosting for Passive Income',tag:'💸 Passive',col:'green',body:'Buy Hostinger reseller plan (~$15/mo). Host all clients on it. Charge each $20–$50/mo. 20 clients × $30/mo = $600/mo passive — all profit after the plan cost. You control hosting, making clients stickier.'},
+  {title:'Niche Down to 3× Your Rates',tag:'🎯 Positioning',col:'accent',body:'"Web designer" is a commodity. "Web designer for med spas" is an expert. Experts charge 3× more, get found easier, get niche referrals. Build 3 killer sites in one niche. Become THE expert for that industry before expanding.'},
+  {title:'Loom Walkthrough = Premium Feel',tag:'⭐ Client Experience',col:'blue',body:'When delivering a draft, record a 3–5 min Loom walking through every section. Explain design choices. This single habit makes you look 10× more professional. Clients feel cared for. Revisions decrease. Reviews increase.'},
+  {title:'Sell the Domain First — Instant Commitment',tag:'🤝 Sales Trick',col:'amber',body:'When a prospect is warming up: "Let me secure your domain before someone else takes it — only $10." Register their domain (charge them). Now they\'re committed. Hard to walk away when the domain is already purchased. Foot-in-the-door psychology.'},
+  {title:'Google Alerts for New Business Leads',tag:'🔔 Lead Gen',col:'green',body:'google.com/alerts → set up alerts: "[your city] new restaurant opening", "[your city] new salon". Get emailed whenever new businesses open. Reach out FIRST before any other designer has. New businesses are the most motivated buyers.'},
+  {title:'Hotjar for Data-Driven Upsells',tag:'📊 Upsell Tool',col:'amber',body:'Add Hotjar free heatmaps after building a site. Weeks later, pull screenshot of heatmap. Email client: "Users click your gallery 3× more than your contact button — want me to add a booking link there?" Data-driven upsell conversations. Client sees ROI, says yes.'},
+  {title:'Cloudflare for Literally Everything',tag:'⚡ Infrastructure',col:'green',body:'Put every client site behind Cloudflare — it\'s free. Benefits: free SSL, free CDN (30–50% faster), free DDoS protection, free DNS management. Sites look professional. Security is bulletproof. Takes 10 minutes. Zero excuses not to do this on every project.'},
+  {title:'The $500 Emergency Site',tag:'💡 Gap Filler',col:'accent',body:'Offer a "Business Emergency" tier: 1-page site in 48 hours for $500 flat. "Need a site this week for an event / investor meeting / press feature?" Fills gaps between large projects. AI makes it viable — deliver in 3–4 hours, charge $500.'},
+  {title:'GitHub Student Pack — $200k+ in Free Tools',tag:'🎓 Students Only',col:'blue',body:'The GitHub Student Developer Pack includes: GitHub Pro, Namecheap .me domain, DigitalOcean credits, MongoDB Atlas, Bootstrap Studio, Canva Pro, and 50+ tools — all free. Worth $200,000+ in real value. education.github.com/pack'},
+];
+
+function renderSecrets(){
+  const c=document.getElementById('secretsList');if(!c)return;
+  c.innerHTML=secrets.map(s=>`<div class="accordion" style="border-left:3px solid var(--${s.col==='accent'?'accent':s.col==='green'?'green':s.col==='amber'?'amber':'blue'})">
+    <div class="accordion-hdr" onclick="toggleAcc(this)">
+      <span class="accordion-title">${s.title}</span>
+      <div style="display:flex;align-items:center;gap:8px"><span class="badge badge-${s.col}">${s.tag}</span><span class="accordion-arrow">▼</span></div>
+    </div>
+    <div class="accordion-body">
+      <div style="font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--text);margin-top:10px;padding:12px;background:var(--bg2);border-radius:var(--r);border:1px solid var(--border)">${s.body}</div>
+    </div>
+  </div>`).join('');
+}
+
+// CALCULATOR
+function updateCalc(){
+  const base=parseFloat(document.getElementById('c-pkg').value)||0;
+  const exp=parseFloat(document.getElementById('c-exp').value)||1;
+  const cli=parseFloat(document.getElementById('c-cli').value)||1;
+  const rush=parseFloat(document.getElementById('c-rush').value)||1;
+  const tax=parseFloat(document.getElementById('c-tax').value)||25;
+  const goal=parseFloat(document.getElementById('c-goal').value)||3000;
+  let addons=0;
+  document.querySelectorAll('#calc-addons input[type=checkbox]:checked').forEach(cb=>addons+=parseFloat(cb.value)||0);
+  const total=Math.round(base*exp*cli*rush+addons);
+  const taxAmt=Math.round(total*(tax/100));
+  const home=total-taxAmt;
+  const dep=Math.round(total*0.5);
+  const toGoal=Math.ceil(goal/total);
+  document.getElementById('c-total').textContent='$'+total.toLocaleString();
+  document.getElementById('c-breakdown').textContent='Base $'+base+' · Add-ons $'+addons;
+  document.getElementById('c-home').textContent='$'+home.toLocaleString();
+  document.getElementById('c-taxamt').textContent='$'+taxAmt.toLocaleString();
+  document.getElementById('c-dep').textContent='$'+dep.toLocaleString();
+  document.getElementById('c-goal2').textContent=toGoal;
+  document.getElementById('c-goal2-sub').textContent='projects/mo to reach $'+goal.toLocaleString();
+}
+
+function copyCalc(btn){
+  const total=document.getElementById('c-total').textContent;
+  const home=document.getElementById('c-home').textContent;
+  const dep=document.getElementById('c-dep').textContent;
+  navigator.clipboard.writeText('Quote: '+total+'\nDeposit (50%): '+dep+'\nYour take-home: '+home+'\n\nTerms: 50% upfront, balance due before launch.').then(()=>{
+    btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy Quote',2000);
+  });
+}
+
+// INIT
+renderNiches();renderAnatomy();renderSecrets();updateCalc();
+</script>
+</body>
+</html>
